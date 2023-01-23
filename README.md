@@ -10,7 +10,9 @@ Project Description:
 	At its core, Ga1ors is a social media app used to generate dialogue outside of its confines. Each day the community is not only given a platform to speak to the masses, but given a topic of conversation on how the random minority choose to use it.
 
 Members:
-	Christian Bello
-	Reece McDonald
-	Ethan Wobb
-	Rhyan Lugo Crespo
+	Backend:
+		Ethan Wobb
+		Reece McDonald
+	Frontend:
+		Christian Bello
+		Rhyan Lugo Crespo
