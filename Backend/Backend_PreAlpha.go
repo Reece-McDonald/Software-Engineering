@@ -37,18 +37,19 @@ func main() {
 	for i != true {
 		fmt.Print("UserName: ")
 
-		UNinput, _ := reader.ReadString('\n')
-		UNinput = strings.TrimSpace(UNinput)
-		if len(UNinput) < 9 {
+		User, _ := reader.ReadString('\n')
+		User = strings.TrimSpace(User)
+		if len(User) < 9 {
 			fmt.Println("Invalid Email!")
 			continue
 		}
-		var email int = len(UNinput) - 8
-		var dom string = string(UNinput[email:len(UNinput)])
+		var email int = len(User) - 8
+		var dom string = string(User[email:len(User)])
 		if dom != "@ufl.edu" {
 			fmt.Println("Invalid Email!")
 		} else {
 			i = true
+			UNinput = string(User[0:email])
 		}
 	}
 
