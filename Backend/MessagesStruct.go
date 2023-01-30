@@ -7,7 +7,7 @@ import (
 type message struct {
 	user    string
 	message string
-	time    int
+	time    string
 }
 
 func (m message) printMessage() {

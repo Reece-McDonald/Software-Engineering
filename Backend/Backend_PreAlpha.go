@@ -8,10 +8,21 @@ import ( //Imports
 	"time"
 )
 
+type message struct {
+	user    string
+	message string
+	time    string
+}
+
+func (m message) printMessage() {
+
+	fmt.Println(m.user, ": ", m.message, "				", m.time)
+}
+
 func main() {
 
 	var maxMessages int = 5 //Max number of messages (5 for testing purposes)
-	var messages [5]string  //string array cant be created using maxMessages as size, I think maxMessages needs to be converted to static type
+	var messages [5]message //string array cant be created using maxMessages as size, I think maxMessages needs to be converted to static type
 
 	reader := bufio.NewReader(os.Stdin) //reads userinput
 
@@ -30,7 +41,6 @@ func main() {
 
 	for looper1 <= maxMessages { //until array reaches capacity
 
-		dt := time.Now()           //Time var
 		fmt.Print("\033[H\033[2J") //clears screen, the reason I'm clearing the screen is so that I can print the chat log then have message prompt add bottom
 
 		fmt.Println("Welcome to the Ga1ors chat Forum!") //UI header
@@ -40,8 +50,8 @@ func main() {
 		if looper1 != 0 { //start printing messages only after the first one is written
 
 			for looper2 < messageCounter { //prints all the messages currently written
-				fmt.Println(UNinput, ": ", messages[looper2], "				", dt.Format(time.Kitchen))
-
+				//fmt.Println(UNinput, ": ", messages[looper2], "				", dt.Format(time.Kitchen))
+				messages[looper2].printMessage()
 				looper2++
 			}
 
@@ -51,8 +61,9 @@ func main() {
 			fmt.Print("Message: ")
 			input, _ := reader.ReadString('\n')
 			input = strings.TrimSpace(input)
-
-			messages[looper1] = input
+			dt := time.Now() //Time var
+			temp := message{UNinput, input, dt.Format(time.Kitchen)}
+			messages[looper1] = temp
 		}
 
 		looper1++ //iterate loop
