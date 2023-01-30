@@ -30,12 +30,27 @@ func main() {
 
 	var looper1 int = 0 //loopers used to control loops
 	var looper2 int = 0
+	var UNinput string
 
 	fmt.Println("Welcome to the Ga1ors chat Forum!") //Init UI header and username input
-	fmt.Print("UserName: ")
+	var i bool = false
+	for i != true {
+		fmt.Print("UserName: ")
 
-	UNinput, _ := reader.ReadString('\n')
-	UNinput = strings.TrimSpace(UNinput)
+		UNinput, _ := reader.ReadString('\n')
+		UNinput = strings.TrimSpace(UNinput)
+		if len(UNinput) < 9 {
+			fmt.Println("Invalid Email!")
+			continue
+		}
+		var email int = len(UNinput) - 8
+		var dom string = string(UNinput[email:len(UNinput)])
+		if dom != "@ufl.edu" {
+			fmt.Println("Invalid Email!")
+		} else {
+			i = true
+		}
+	}
 
 	//go's weird version of while loops
 
