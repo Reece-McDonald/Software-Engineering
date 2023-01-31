@@ -68,7 +68,6 @@ func main() {
 		if looper1 != 0 { //start printing messages only after the first one is written
 
 			for looper2 < messageCounter { //prints all the messages currently written
-				//fmt.Println(UNinput, ": ", messages[looper2], "				", dt.Format(time.Kitchen))
 				messages[looper2].printMessage()
 				looper2++
 			}
@@ -84,30 +83,18 @@ func main() {
 			if len(input) == 0 {
 				fmt.Print("Please enter a valid message")
 				time.Sleep(1 * time.Second)
-				looper1--
+				looper1-- //decriminate to not affect message limit
 				messageCounter--
-			} else if len(input) <= charLimit {
-				temp := message{UNinput, input, dt.Format(time.Kitchen)}
-				messages[looper1] = temp
-			} else {
+			} else if len(input) <= charLimit { //if valid message
+				temp := message{UNinput, input, dt.Format(time.Kitchen)} //object creation
+				messages[looper1] = temp                                 //object push
+			} else { //if over char limit
 				fmt.Print("Message over character limit ", charLimit, " characters maximum")
 				time.Sleep(1 * time.Second)
-				looper1--
+				looper1-- //decriminate to not affect message limit
 				messageCounter--
 			}
 
-			/*
-				if len(input) != 0 { //if valid message
-					temp := message{UNinput, input, dt.Format(time.Kitchen)}
-					messages[looper1] = temp
-				} else { //if user presses enter without typing anything
-					fmt.Print("Please enter a valid message")
-					time.Sleep(1 * time.Second)
-					looper1--
-					messageCounter--
-				}
-
-			*/
 		}
 
 		looper1++ //iterate loop
