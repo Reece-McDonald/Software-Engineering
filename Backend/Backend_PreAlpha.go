@@ -22,6 +22,7 @@ func (m message) printMessage() {
 func main() {
 
 	var maxMessages int = 5 //Max number of messages (5 for testing purposes)
+	var charLimit int = 10
 	var messages [5]message //string array cant be created using maxMessages as size, I think maxMessages needs to be converted to static type
 
 	reader := bufio.NewReader(os.Stdin) //reads userinput
@@ -30,6 +31,7 @@ func main() {
 
 	var looper1 int = 0 //loopers used to control loops
 	var looper2 int = 0
+
 	var UNinput string
 
 	fmt.Println("Welcome to the Ga1ors chat Forum!") //Init UI header and username input
@@ -78,8 +80,34 @@ func main() {
 			input, _ := reader.ReadString('\n')
 			input = strings.TrimSpace(input)
 			dt := time.Now() //Time var
-			temp := message{UNinput, input, dt.Format(time.Kitchen)}
-			messages[looper1] = temp
+
+			if len(input) == 0 {
+				fmt.Print("Please enter a valid message")
+				time.Sleep(1 * time.Second)
+				looper1--
+				messageCounter--
+			} else if len(input) <= charLimit {
+				temp := message{UNinput, input, dt.Format(time.Kitchen)}
+				messages[looper1] = temp
+			} else {
+				fmt.Print("Message over character limit ", charLimit, " characters maximum")
+				time.Sleep(1 * time.Second)
+				looper1--
+				messageCounter--
+			}
+
+			/*
+				if len(input) != 0 { //if valid message
+					temp := message{UNinput, input, dt.Format(time.Kitchen)}
+					messages[looper1] = temp
+				} else { //if user presses enter without typing anything
+					fmt.Print("Please enter a valid message")
+					time.Sleep(1 * time.Second)
+					looper1--
+					messageCounter--
+				}
+
+			*/
 		}
 
 		looper1++ //iterate loop
