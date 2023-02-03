@@ -42,7 +42,7 @@ func main() {
 		User, _ := reader.ReadString('\n')
 		User = strings.TrimSpace(User)
 		if len(User) < 9 {
-			fmt.Println("Invalid Email!")
+			fmt.Println("Invalid Email! (Must be a valid ufl.edu address)")
 			continue
 		}
 		var email int = len(User) - 8
