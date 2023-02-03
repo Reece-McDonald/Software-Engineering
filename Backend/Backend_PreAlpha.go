@@ -15,14 +15,14 @@ type message struct {
 }
 
 func (m message) printMessage() {
+	fmt.Println(m.time+"\t", m.user+": ", "\n\t\t"+m.message)
 
-	fmt.Println(m.user, ": ", m.message, "				", m.time)
 }
 
 func main() {
 
 	var maxMessages int = 5 //Max number of messages (5 for testing purposes)
-	var charLimit int = 10
+	var charLimit int = 30
 	var messages [5]message //string array cant be created using maxMessages as size, I think maxMessages needs to be converted to static type
 
 	reader := bufio.NewReader(os.Stdin) //reads userinput
@@ -36,19 +36,19 @@ func main() {
 
 	fmt.Println("Welcome to the Ga1ors chat Forum!") //Init UI header and username input
 	var i bool = false
-	for i != true {
+	for i != true { // Loop to inform user their email isn't valid; i.e. not a UF email (ending in @ufl.edu)
 		fmt.Print("UserName: ")
 
 		User, _ := reader.ReadString('\n')
 		User = strings.TrimSpace(User)
-		if len(User) < 9 {
+		if len(User) < 9 { // Checks if valid size, which is at least 9 chars, 8 for "@ufl.edu" and 1 for at least one preceding character.
 			fmt.Println("Invalid Email!")
 			continue
 		}
-		var email int = len(User) - 8
-		var dom string = string(User[email:len(User)])
-		if dom != "@ufl.edu" {
-			fmt.Println("Invalid Email!")
+		var email int = len(User) - 8                  // email will store the length of the email without "@uf.edu" for parsing of the username later
+		var dom string = string(User[email:len(User)]) // dom will store the final 8 chars which should be the "@ufl.edu" for comparison
+		if dom != "@ufl.edu" {                         // if-else for checking if the valid domain of "@ufl.edu" is in dom, if so, loop will break and UNinput is updated with the first part of the email
+			fmt.Println("Invalid Email!") // if fails, gives this message and starts loop over
 		} else {
 			i = true
 			UNinput = string(User[0:email])
