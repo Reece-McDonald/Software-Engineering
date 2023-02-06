@@ -27,6 +27,7 @@ h1 {
   body.image{
     background-image: url(https://thecrocodile.org/wp-content/uploads/2015/08/cent.jpg);
     image-rendering: auto;
+    opacity: 0.6;
   }
 
   html.body{
