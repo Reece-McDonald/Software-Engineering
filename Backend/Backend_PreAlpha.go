@@ -101,5 +101,6 @@ func main() {
 		looper2 = 0
 		messageCounter++
 	}
+	fmt.Print("The message limit has been reached for today, messages reset 12:00AM EST every day.")
 
 }
