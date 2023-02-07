@@ -10,7 +10,7 @@ func Register(c *fiber.Ctx) error {
 		FirstName: "John",
 		LastName:  "Smith",
 		Email:     "john@smith.com",
-		Password:  "johnsmith",
+		Password:  "johnsmith1",
 	}
 
 	return c.JSON(user)
