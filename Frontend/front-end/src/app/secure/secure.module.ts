@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {NavComponent} from "./nav/nav.component";
 import {MenuComponent} from "./menu/menu.component";
-import { SecureComponent } from './secure.component';
+import {SecureComponent} from './secure.component';
 import {TestChatComponent} from "./test-chat/test-chat.component";
 import {RouterLink} from "@angular/router";
-
 
 
 @NgModule({
@@ -18,9 +17,10 @@ import {RouterLink} from "@angular/router";
   exports: [
     SecureComponent
   ],
-    imports: [
-        CommonModule,
-        RouterLink
-    ]
+  imports: [
+    CommonModule,
+    RouterLink
+  ]
 })
-export class SecureModule { }
+export class SecureModule {
+}

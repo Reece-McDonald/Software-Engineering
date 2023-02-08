@@ -7,6 +7,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
+// Resource: 'https://www.udemy.com/course/angular-go-admin/'
 func main() {
 	database.Connect()
 

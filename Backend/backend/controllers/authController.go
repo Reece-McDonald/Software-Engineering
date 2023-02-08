@@ -9,14 +9,17 @@ import (
 	"time"
 )
 
-func Register(c *fiber.Ctx) error {
-	var data map[string]string
+// Register Allows for the registering of a user. Uses endpoint ['/api/register']
+// when adding a new user. If successful, will add new user to database.
+// POST REQUEST
+func Register(c *fiber.Ctx) error { // TODO: Only UF emails are allowed
+	var userRegisterInformation map[string]string
 
-	if err := c.BodyParser(&data); err != nil {
+	if err := c.BodyParser(&userRegisterInformation); err != nil {
 		return err
 	}
 
-	if data["password"] != data["passwordConfirm"] {
+	if userRegisterInformation["password"] != userRegisterInformation["passwordConfirm"] {
 		c.Status(400)
 		return c.JSON(fiber.Map{
 			"message": "Passwords do not match",
@@ -24,28 +27,32 @@ func Register(c *fiber.Ctx) error {
 	}
 
 	user := models.User{
-		FirstName: data["firstName"],
-		LastName:  data["lastName"],
-		Email:     data["email"],
+		FirstName: userRegisterInformation["firstName"],
+		LastName:  userRegisterInformation["lastName"],
+		Email:     userRegisterInformation["email"],
 	}
 
-	user.SetPassword(data["password"])
+	user.SetPassword(userRegisterInformation["password"])
 
 	database.DB.Create(&user)
 
 	return c.JSON(user)
 }
 
-func Login(c *fiber.Ctx) error {
-	var data map[string]string
+// Login Allows for a user to login. Uses endpoint ['/api/register']
+// when users try to log in. Checks for valid email in database
+// and valid password for that email.
+// POST REQUEST
+func Login(c *fiber.Ctx) error { // TODO: Only UF emails are allowed
+	var userLoginInformation map[string]string
 
-	if err := c.BodyParser(&data); err != nil {
+	if err := c.BodyParser(&userLoginInformation); err != nil {
 		return err
 	}
 
 	var user models.User
 
-	database.DB.Where("email = ?", data["email"]).First(&user) // get user from database
+	database.DB.Where("email = ?", userLoginInformation["email"]).First(&user) // get user from database
 
 	if user.Id == 0 {
 		c.Status(404)
@@ -54,7 +61,7 @@ func Login(c *fiber.Ctx) error {
 		})
 	}
 
-	if err := user.ComparePassword(data["password"]); err != nil {
+	if err := user.ComparePassword(userLoginInformation["password"]); err != nil {
 		c.Status(400)
 		return c.JSON(fiber.Map{
 			"message": "Passwords do not match",
@@ -67,6 +74,7 @@ func Login(c *fiber.Ctx) error {
 		return c.SendStatus(fiber.StatusInternalServerError)
 	}
 
+	// Creates session cookie using JWT. Important for check that user is logged in throughout the session.
 	cookie := fiber.Cookie{
 		Name:     "jwt",
 		Value:    token,
@@ -81,6 +89,9 @@ func Login(c *fiber.Ctx) error {
 	})
 }
 
+// User Allows for the retrieval of the current user from the database
+// based on cookie. Uses endpoint ['/api/user'].
+// GET REQUEST
 func User(c *fiber.Ctx) error {
 	cookie := c.Cookies("jwt")
 
@@ -93,11 +104,14 @@ func User(c *fiber.Ctx) error {
 	return c.JSON(user)
 }
 
+// Logout Allows for currently logged-in user to be logged out.
+// Uses endpoint ['/api/logout'].
+// POST REQUEST
 func Logout(c *fiber.Ctx) error {
 	cookie := fiber.Cookie{ // Remove cookie by setting it to the past
 		Name:     "jwt",
 		Value:    "",
-		Expires:  time.Now().Add(-time.Hour),
+		Expires:  time.Now().Add(-time.Hour), // Set to past in order to remove cookie.
 		HTTPOnly: true,
 	}
 
@@ -108,10 +122,13 @@ func Logout(c *fiber.Ctx) error {
 	})
 }
 
+// UpdateInfo Allows for updating the user data (does not include password).
+// Uses endpoint ['/api/users/info'].
+// PUT REQUEST
 func UpdateInfo(c *fiber.Ctx) error {
-	var data map[string]string
+	var userUpdatedInformation map[string]string
 
-	if err := c.BodyParser(&data); err != nil {
+	if err := c.BodyParser(&userUpdatedInformation); err != nil {
 		return err
 	}
 
@@ -123,9 +140,9 @@ func UpdateInfo(c *fiber.Ctx) error {
 
 	user := models.User{
 		Id:        uint(userId),
-		FirstName: data["firstName"],
-		LastName:  data["lastName"],
-		Email:     data["email"],
+		FirstName: userUpdatedInformation["firstName"],
+		LastName:  userUpdatedInformation["lastName"],
+		Email:     userUpdatedInformation["email"],
 	}
 
 	database.DB.Model(&user).Updates(user)
@@ -134,14 +151,16 @@ func UpdateInfo(c *fiber.Ctx) error {
 
 }
 
+// UpdatePassword Allows for changing of the password of a user. Uses endpoint ['/api/users/password'].
+// PUT REQUEST
 func UpdatePassword(c *fiber.Ctx) error {
-	var data map[string]string
+	var userUpdatedPassword map[string]string
 
-	if err := c.BodyParser(&data); err != nil {
+	if err := c.BodyParser(&userUpdatedPassword); err != nil {
 		return err
 	}
 
-	if data["password"] != data["passwordConfirm"] {
+	if userUpdatedPassword["password"] != userUpdatedPassword["passwordConfirm"] {
 		c.Status(400)
 		return c.JSON(fiber.Map{
 			"message": "Passwords do not match",
@@ -158,7 +177,7 @@ func UpdatePassword(c *fiber.Ctx) error {
 		Id: uint(userId),
 	}
 
-	user.SetPassword(data["password"])
+	user.SetPassword(userUpdatedPassword["password"])
 
 	database.DB.Model(&user).Updates(user)
 

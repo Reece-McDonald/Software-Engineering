@@ -11,6 +11,8 @@ func Setup(app *fiber.App) {
 	app.Post("/api/register", controllers.Register)
 	app.Post("/api/login", controllers.Login)
 
+	// Middleware uses for making sure that a valid user is logged in
+	// Otherwise, other functions are not available.
 	app.Use(middleware.IsAuthenticated)
 
 	// Private Routes

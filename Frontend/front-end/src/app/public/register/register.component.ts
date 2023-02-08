@@ -38,6 +38,8 @@ export class RegisterComponent implements OnInit {
       email: this.email,
       password: this.password,
       passwordConfirm: this.password,
-    }).subscribe(() => {this.router.navigate(['/login'])}); //redirect after successful login
+    }).subscribe(() => {
+      this.router.navigate(['/login'])
+    }); //redirect after successful login
   }
 }

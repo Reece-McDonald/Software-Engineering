@@ -5,6 +5,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+// IsAuthenticated Validates that the current user is logged in and is a valid one
 func IsAuthenticated(c *fiber.Ctx) error {
 	cookie := c.Cookies("jwt")
 

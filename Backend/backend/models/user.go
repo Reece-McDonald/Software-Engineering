@@ -23,6 +23,7 @@ func (user *User) ComparePassword(password string) error {
 	return bcrypt.CompareHashAndPassword(user.Password, []byte(password))
 }
 
+// Count Used in paginate to retrieve numbers of users in database.
 func (user *User) Count(db *gorm.DB) int64 {
 	var total int64
 
@@ -31,7 +32,8 @@ func (user *User) Count(db *gorm.DB) int64 {
 	return total
 }
 
-// display each user during get request as json
+// Take Used in retrieving the number of users for the current page based on the offset and limit of
+// the pagination function.
 func (user *User) Take(db *gorm.DB, limit int, offset int) interface{} {
 	var users []User
 
