@@ -8,7 +8,7 @@ import {User} from "../../interfaces/user";
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  @Input('user') user!: User;
+  @Input('user') user: User | undefined;
 
   constructor(
     private authService: AuthService
