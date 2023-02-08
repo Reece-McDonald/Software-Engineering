@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../environments/environment";
 import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -9,7 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./register.component.css', './../public.component.css']
 })
 
-export class RegisterComponent implements OnInit{
+export class RegisterComponent implements OnInit {
   firstName = '';
   lastName = '';
   email = '';
@@ -17,30 +16,31 @@ export class RegisterComponent implements OnInit{
   passwordConfirm = '';
 
   constructor(
-    private http: HttpClient,
-    private router: Router) {
+    private router: Router,
+    private authService: AuthService) {
   }
 
   ngOnInit(): void {
   }
 
   submit(): void {
-  //   console.log({
-  //     firstName: this.firstName,
-  //     lastName: this.lastName,
-  //     email: this.email,
-  //     password: this.password,
-  //     passwordConfirm: this.password,
-  // });
-    this.http.post(`${environment.api}/register`, {
+    //   console.log({
+    //     firstName: this.firstName,
+    //     lastName: this.lastName,
+    //     email: this.email,
+    //     password: this.password,
+    //     passwordConfirm: this.password,
+    // });
+
+    this.authService.register({
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
       password: this.password,
       passwordConfirm: this.password,
     }).subscribe(
-        res =>{
-          this.router.navigate(['/login']); //redirect after successful login
-        });
+      () => {
+        this.router.navigate(['/login']); //redirect after successful login
+      });
   }
 }
