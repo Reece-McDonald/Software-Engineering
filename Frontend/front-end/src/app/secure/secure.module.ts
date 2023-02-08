@@ -4,6 +4,7 @@ import {NavComponent} from "./nav/nav.component";
 import {MenuComponent} from "./menu/menu.component";
 import { SecureComponent } from './secure.component';
 import {TestChatComponent} from "./test-chat/test-chat.component";
+import {RouterLink} from "@angular/router";
 
 
 
@@ -17,8 +18,9 @@ import {TestChatComponent} from "./test-chat/test-chat.component";
   exports: [
     SecureComponent
   ],
-  imports: [
-    CommonModule
-  ]
+    imports: [
+        CommonModule,
+        RouterLink
+    ]
 })
 export class SecureModule { }
