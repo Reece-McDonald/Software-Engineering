@@ -11,8 +11,8 @@ Project Description:
 
 Members:
 	Backend:
-		Ethan Wobb
+		Ethan Wobb,
 		Reece McDonald
 	Frontend:
-		Christian Bello
+		Christian Bello,
 		Rhyan Lugo Crespo
