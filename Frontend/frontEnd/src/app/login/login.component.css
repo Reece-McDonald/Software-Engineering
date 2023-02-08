@@ -1,0 +1,95 @@
+
+h1 {
+    color: #FA4616 ;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 325%;
+    text-align: center;
+    background-color: #0021A5;
+    margin-top: -8px;
+    margin-left: -10px;
+    margin-right: -6px;
+    margin-bottom: 4px;
+  }
+  
+  h2, h3 {
+    color: #444;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: light;
+    font-size: 425%;
+    text-align: center;
+  }
+
+  body {
+    text-align: center;
+   /* background-image: url(https://thecrocodile.org/wp-content/uploads/2015/08/cent.jpg); */
+    min-height: 300%;
+  }
+
+  .bodyImage{
+    background-image: url(https://thecrocodile.org/wp-content/uploads/2015/08/cent.jpg);
+    image-rendering: auto;
+    min-height: 100%;
+  }
+
+  html.body{
+    height: 100%;
+  }
+
+  body, input[type="text"], button { /* from Angular Hero Tutorial*/
+    color: #333;
+    font-family: Cambria, Georgia, serif;
+  }
+
+  label{
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;  
+    font-size: 115%;  
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1.1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+
+  input{
+    align-items: center;
+    margin-left: -15px;
+    padding-block: 0.25rem;
+  }
+
+  button {
+    background-color: #0021A5;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    color: whitesmoke;
+    font-size: 1.2rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  button:hover {
+    background-color: black;
+    color: white;
+  }
+  button:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: auto;
+  }
+
+  .fade-in-text {
+    animation: fadeIn 3s;
+  }
+
+  @keyframes fadeIn { /* reference: found on a website */
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+
+  /* everywhere else */
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+  }
