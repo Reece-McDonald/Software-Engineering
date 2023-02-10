@@ -2,6 +2,7 @@ package database
 
 import (
 	"Ga1ors/models"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -9,7 +10,7 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	database, err := gorm.Open(mysql.Open("root:rhyan6815@/ga1ors"), &gorm.Config{}) // TODO: Change from local database to cloud database
+	database, err := gorm.Open(mysql.Open("root:wobbe@/ga1ors"), &gorm.Config{}) // TODO: Change from local database to cloud database
 
 	if err != nil {
 		panic("Could not connect to database")
