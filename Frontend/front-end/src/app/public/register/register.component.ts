@@ -24,13 +24,16 @@ export class RegisterComponent implements OnInit {
   }
 
   submit(): void {
-    //   console.log({
-    //     firstName: this.firstName,
-    //     lastName: this.lastName,
-    //     email: this.email,
-    //     password: this.password,
-    //     passwordConfirm: this.password,
-    // });
+       console.log({
+         firstName: this.firstName,
+         lastName: this.lastName,
+         email: this.email,
+         password: this.password,
+         passwordConfirm: this.password,   
+     })
+
+     window.alert('Registration Successful');
+    
 
     this.authService.register({
       firstName: this.firstName,
