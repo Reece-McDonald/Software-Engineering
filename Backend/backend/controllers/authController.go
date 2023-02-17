@@ -4,19 +4,27 @@ import (
 	"Ga1ors/database"
 	"Ga1ors/models"
 	"Ga1ors/util"
-	"github.com/gofiber/fiber/v2"
 	"strconv"
 	"time"
+
+	"github.com/gofiber/fiber/v2"
 )
 
 // Register Allows for the registering of a user. Uses endpoint ['/api/register']
 // when adding a new user. If successful, will add new user to database.
 // POST REQUEST
-func Register(c *fiber.Ctx) error { // TODO: Only UF emails are allowed
+func Register(c *fiber.Ctx) error { // I believe this should be good. TODO: Only UF emails are allowed
 	var userRegisterInformation map[string]string
 
 	if err := c.BodyParser(&userRegisterInformation); err != nil {
 		return err
+	}
+
+	if ValidUFEmail(userRegisterInformation["email"]) == false {
+		c.Status(400)
+		return c.JSON(fiber.Map{
+			"message": "Invalid Email! (Must be a valid ufl.edu address)", // Prints error message
+		})
 	}
 
 	if userRegisterInformation["password"] != userRegisterInformation["passwordConfirm"] {
@@ -43,7 +51,7 @@ func Register(c *fiber.Ctx) error { // TODO: Only UF emails are allowed
 // when users try to log in. Checks for valid email in database
 // and valid password for that email.
 // POST REQUEST
-func Login(c *fiber.Ctx) error { // TODO: Only UF emails are allowed
+func Login(c *fiber.Ctx) error { // I believe this should be good. TODO: Only UF emails are allowed
 	var userLoginInformation map[string]string
 
 	if err := c.BodyParser(&userLoginInformation); err != nil {
@@ -52,6 +60,7 @@ func Login(c *fiber.Ctx) error { // TODO: Only UF emails are allowed
 
 	var user models.User
 
+	// This should check for if an email exists or not, the register function will check for valid UF emails, so if the email doesn't exist it is neither a valid UF email nor one that exists.
 	database.DB.Where("email = ?", userLoginInformation["email"]).First(&user) // get user from database
 
 	if user.Id == 0 {
@@ -149,6 +158,19 @@ func UpdateInfo(c *fiber.Ctx) error {
 
 	return c.JSON(user)
 
+}
+
+func ValidUFEmail(e string) bool { // Function to inform user their email isn't valid; i.e. not a UF email (ending in @ufl.edu)
+	if len(e) < 9 { // Checks if valid size, which is at least 9 chars, 8 for "@ufl.edu" and 1 for at least one preceding character.
+		return false // returns false if the input email is less than a valid email length
+	}
+	var email int = len(e) - 8               // email will store the length of the email without "@uf.edu" for parsing of the username later
+	var dom string = string(e[email:len(e)]) // dom will store the final 8 chars which should be the "@ufl.edu" for comparison
+	if dom != "@ufl.edu" {                   // if-else for checking if the valid domain of "@ufl.edu" is in dom, if so, loop will break and UNinput is updated with the first part of the email
+		return false // returns false if the dom variable doesn't include the proper domain.
+	} else {
+		return true // returns true if valid email
+	}
 }
 
 // UpdatePassword Allows for changing of the password of a user. Uses endpoint ['/api/users/password'].

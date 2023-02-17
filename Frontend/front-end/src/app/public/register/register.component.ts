@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
          passwordConfirm: this.password,   
      })
 
-     window.alert('Registration Successful');
+    window.alert('Registration Successful');
     
 
     this.authService.register({
