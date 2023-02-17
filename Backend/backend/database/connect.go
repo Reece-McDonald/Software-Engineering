@@ -10,7 +10,7 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	database, err := gorm.Open(mysql.Open("root:mcdre/ga1ors"), &gorm.Config{}) // TODO: Change from local database to cloud database
+	database, err := gorm.Open(mysql.Open("root:wobbe/ga1ors"), &gorm.Config{}) // TODO: Change from local database to cloud database
 
 	if err != nil {
 		panic("Could not connect to database")
