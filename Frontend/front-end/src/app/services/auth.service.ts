@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {User} from "../interfaces/user";
+import {Message} from "../interfaces/message";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class AuthService {
     return this.http.get<User>(`${environment.api}/user`, {
       withCredentials: true
     });
+  }
+
+  message(): Observable<Message> {
+
   }
 
   logout(): Observable<void> {
