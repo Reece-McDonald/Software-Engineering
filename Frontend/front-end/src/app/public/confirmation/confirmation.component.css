@@ -3,7 +3,7 @@ text-align: center;
 }
 
 h2{
-    margin-top: 100px;
+    margin-top: 1px;
     text-align: center;
     font-size: x-large ;
 }
@@ -17,13 +17,17 @@ h2{
 }
 
 main{
-    margin-left: 600px;
-    margin-right: 600px;
+    margin-left: 650px;
+    margin-right: 650px;
     align-items: center;
 
 }
 
 button{
-    margin-left: 120px;
+    margin-left: 77px;
     background-color: #0021A5;
+}
+
+img{
+    margin-left: 800px;
 }
