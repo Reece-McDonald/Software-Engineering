@@ -5,13 +5,15 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {RouterLink, RouterOutlet} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 
 @NgModule({
   declarations: [
     PublicComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ConfirmationComponent
   ],
   imports: [
     CommonModule,
