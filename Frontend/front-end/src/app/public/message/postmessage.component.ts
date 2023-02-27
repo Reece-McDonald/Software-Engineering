@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     window.alert('Message Posted');
     
 
-    this.authService.register({
+    /*this.authService.register({
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
@@ -41,6 +41,6 @@ export class RegisterComponent implements OnInit {
       passwordConfirm: this.password,
     }).subscribe(() => {
       this.router.navigate(['/login'])
-    }); //redirect after successful login
+    }); //redirect after successful login*/
   }
 }
