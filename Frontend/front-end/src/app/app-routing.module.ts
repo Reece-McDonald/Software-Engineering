@@ -1,9 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import{ConfirmationComponent} from "./public/confirmation/confirmation.component";
 import {LoginComponent} from "./public/login/login.component";
 import {RegisterComponent} from "./public/register/register.component";
 import {SecureComponent} from "./secure/secure.component";
 import {PublicComponent} from "./public/public.component";
+
+
 
 const routes: Routes = [
   {path: '', component: SecureComponent},
@@ -12,7 +15,9 @@ const routes: Routes = [
     component: PublicComponent,
     children: [
       {path: 'register', component: RegisterComponent},
-      {path: 'login', component: LoginComponent},]
+      {path: 'login', component: LoginComponent},
+      {path: 'confirm', component: ConfirmationComponent}
+    ]
   },
 ];
 
