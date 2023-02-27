@@ -1,9 +1,29 @@
 h1{
-margin: 100px;
+text-align: center;
 }
 
 h2{
-margin: 100px;
-text-align: center;
+    margin-top: 100px;
+    text-align: center;
+    font-size: large;
+}
 
+#title{
+    color: #FA4616;
+    font-size: 325%;
+    text-align: center;
+    background-color: #0021A5;
+    margin: 8px -6px 4px -10px;
+}
+
+main{
+
+    margin-left: 600px;
+    margin-right: 600px;
+    align-items: center;
+
+}
+
+button{
+    margin-left: 120px;
 }
