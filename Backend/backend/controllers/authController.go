@@ -45,8 +45,10 @@ func Register(c *fiber.Ctx) error { // I believe this should be good. TODO: Only
 
 	user.SetPassword(userRegisterInformation["password"])
 
+	//ver := sendEmail(userRegisterInformation["email"])
+	//if userRegisterInformation["verificationCode"] == strconv.Itoa(ver){
 	database.DB.Create(&user)
-	sendEmail(userRegisterInformation["email"])
+	//}
 	return c.JSON(user)
 }
 
@@ -209,23 +211,24 @@ func UpdatePassword(c *fiber.Ctx) error {
 	return c.JSON(user)
 }
 
-func sendEmail(to string) { //func will return verCode which will be used to compare with user input on auth page
+func sendEmail(to string) int { //func will return verCode which will be used to compare with user input on auth page
 
-	rand.Seed(time.Now().UnixNano())
+	rand.Seed(time.Now().UnixNano()) //random code gen
 	min := 10000
 	max := 99999
 	verCode := (rand.Intn(max-min+1) + min)
-	message := gomail.NewMessage()
+
+	message := gomail.NewMessage() //message creation
 	message.SetHeader("From", "NOREPLY.Ga1ors@gmail.com")
 	message.SetHeader("To", to)
 	message.SetHeader("Subject", "Ga1ors Verification E-mail")
 	message.SetBody("text/plain", "Thank you for creating your Ga1ors Account! Verification Code: "+strconv.Itoa(verCode))
 
-	email := gomail.NewDialer("smtp.gmail.com", 587, "NOREPLY.Ga1ors@gmail.com", "lcopgjjgrotttwpu")
+	email := gomail.NewDialer("smtp.gmail.com", 587, "NOREPLY.Ga1ors@gmail.com", "lcopgjjgrotttwpu") //email send func
 
-	if err := email.DialAndSend(message); err != nil {
+	if err := email.DialAndSend(message); err != nil { //error catch
 		fmt.Println(err)
 		panic(err)
 	}
-	//return verCode
+	return verCode //return verification code
 }
