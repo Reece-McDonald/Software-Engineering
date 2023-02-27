@@ -31,7 +31,9 @@ export class AuthService {
   }
 
   message(): Observable<Message> {
-
+    return this.http.get<Message>(`${environment.api}/message`, {
+      withCredentials: true
+    });
   }
 
   logout(): Observable<void> {
