@@ -29,20 +29,35 @@ export class RegisterComponent implements OnInit {
          lastName: this.lastName,
          email: this.email,
          password: this.password,
-         passwordConfirm: this.password,   
+         passwordConfirm: this.password,
      })
 
-    window.alert('Registration Successful');
-    
 
-    this.authService.register({
-      firstName: this.firstName,
-      lastName: this.lastName,
-      email: this.email,
-      password: this.password,
-      passwordConfirm: this.password,
-    }).subscribe(() => {
-      this.router.navigate(['/login'])
-    }); //redirect after successful login
+    if (!this.email.includes("@ufl.edu"))
+    {
+      window.alert('Email must be a ufl.edu.');
+    }
+    else if (this.checkIfEmpty(this.firstName) || this.checkIfEmpty(this.lastName) || this.checkIfEmpty(this.email) || this.checkIfEmpty(this.password) || this.checkIfEmpty(this.password))
+    {
+      window.alert("All fields must be filled in.")
+    }
+    else
+    {
+      this.authService.register({
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password,
+        passwordConfirm: this.password,
+      }).subscribe(() => {
+        this.router.navigate(['/login'])
+      }); //redirect after successful login
+    }
+  }
+
+  // check if user inputs are empty
+  checkIfEmpty(value: string): boolean
+  {
+    return value === null || value.trim().length === 0;
   }
 }
