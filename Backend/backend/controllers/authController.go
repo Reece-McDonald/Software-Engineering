@@ -78,7 +78,7 @@ func Login(c *fiber.Ctx) error { // I believe this should be good. TODO: Only UF
 	if err := user.ComparePassword(userLoginInformation["password"]); err != nil {
 		c.Status(400)
 		return c.JSON(fiber.Map{
-			"message": "Passwords do not match",
+			"message": "Invalid Password",
 		})
 	}
 

@@ -1,0 +1,47 @@
+[
+    {
+        "email": "wobbethan@ufl.edu",
+        "password": "password"
+        
+    },
+
+    
+
+    {
+        "email": "reecemcdonald@ufl.edu",
+        "password": "password123"
+        
+    },
+
+    {
+        "email": "chris.bello@ufl.edu",
+        "password": "CEN3031"
+        
+    },
+
+    {
+        "email": "rhyancrespo@ufl.edu",
+        "password": "SoftwareENG"
+        
+    },
+
+    {
+        "email": "bademail@gmail.com",
+        "password": "password"
+        
+    },
+
+    {
+        "email": "badpassword@ufl.edu",
+        "password": "password"
+
+    },
+
+    {
+        "email": "wobbethan@ufl.edu",
+        "password": "notThePassword"
+        
+    }
+
+
+]
