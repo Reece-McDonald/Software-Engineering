@@ -124,6 +124,7 @@ The next component tested was the register component which was done similarly si
 
 Frontend----------------------------------------------------------------------------------------------------------------------------------
 
-This sprint was solely focused on testing, so the bulk of the work was learning to work with Cypress and have it properly installed in the repository so that tests can be created and ran. Outside of the tests, a confirmation component/page was created in order to be able to have users receive the email with a confirmation code and then enter said code into the input. This won't be shown off in this demo since we haven't been able to implement it with the function in the backend that creates the confirmation code and sends an email to the user.
+This sprint was solely focused on testing, so the bulk of the work was learning to work with Cypress and have it properly installed in the repository so that tests can be created and ran. Outside of the tests, a confirmation component/page was created in order to be able to have users receive the email with a confirmation code and then enter said code into the input. This won't be shown off in this sprint demo since we haven't been able to implement it with the function in the backend that creates the confirmation code and sends an email to the user.
 
+This page and the actual messaging on the frontend is a goal to be completed by the end of Sprint 3 so that we can then work on integration of messages and fix up semantics involving logging in and attributing messages to a user. 
 
