@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   submit() {
     console.log(this.form.getRawValue());
-    //window.alert('Login Success');
+    window.alert('Login Success');
     this.authService.login(this.form.getRawValue()).subscribe(() => this.router.navigate(['/']));
   }
 
