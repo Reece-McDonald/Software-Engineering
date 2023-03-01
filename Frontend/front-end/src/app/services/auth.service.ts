@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
 import {User} from "../interfaces/user";
+import {Message} from "../interfaces/message";
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,12 @@ export class AuthService {
 
   user(): Observable<User> {
     return this.http.get<User>(`${environment.api}/user`, {
+      withCredentials: true
+    });
+  }
+
+  message(): Observable<Message> {
+    return this.http.get<Message>(`${environment.api}/message`, {
       withCredentials: true
     });
   }
