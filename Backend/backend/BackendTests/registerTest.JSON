@@ -1,0 +1,57 @@
+[
+    {
+        "firstName": "Ethan", 
+        "lastName": "Wobb",
+        "email": "wobbethan@ufl.edu",
+        "password": "password",
+        "passwordConfirm": "password"
+        
+    },
+
+    {
+        "firstName": "Reece", 
+        "lastName": "McDonald",
+        "email": "reecemcdonald@ufl.edu",
+        "password": "password123",
+        "passwordConfirm": "password123"
+        
+    },
+
+    {
+        "firstName": "Chris", 
+        "lastName": "Bello",
+        "email": "chris.bello@ufl.edu",
+        "password": "CEN3031",
+        "passwordConfirm": "CEN3031"
+        
+    },
+
+    {
+        "firstName": "Rhyan", 
+        "lastName": "Crespo",
+        "email": "rhyancrespo@ufl.edu",
+        "password": "SoftwareENG",
+        "passwordConfirm": "SoftwareENG"
+        
+    },
+
+    {
+        "firstName": "Bad", 
+        "lastName": "E-mail",
+        "email": "bademail@gmail.com",
+        "password": "password",
+        "passwordConfirm": "password"
+        
+    },
+
+    {
+        "firstName": "Bad", 
+        "lastName": "Password",
+        "email": "badpassword@ufl.edu",
+        "password": "password",
+        "passwordConfirm": "mismatch"
+        
+    }
+
+
+]
