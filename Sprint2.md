@@ -104,7 +104,7 @@ is safer.
 
 Backend API ------------------------------------------------------------------------------------------------------------------------------
 
-The way we have the APIset up between our GoLang program and SQL local server is that upon start up, we establish the connection to the SQL server,
+The way we have the API set up between our GoLang program and SQL local server is that upon start up, we establish the connection to the SQL server,
 we then use a function that blocks requests from differen ports than the one we're using, and this allows the frontend to get the users cookies.
 We then use a setup function that estabilshes our private and public routes, the private routes being things like user, users, info, etc., things
 we are using for testing purposes to look at the SQL server and see how it is storing our data we're inputting. The public routes are register and 
@@ -115,5 +115,15 @@ it, and is then passed into the SQL local server organized, hashed, and stored. 
 their designated ID number, which only us on the backend will see.
 
 Frontend Tests --------------------------------------------------------------------------------------------------------------------------- 
+
+The focus of the frontend team for this sprint was moreso the testing aspect of our current components. The main focus of the testing comprised of the login and registration components since they are the most complete components of the frontend.
+
+The Cypress test first examines if the login component has been mounted properly before proceeding to the next steps in the test. The test then examines if the fields in the login page are filled by typing in a sample email and password into the input fields; furthermore, the test then clicks on the register button and demonstrates that clicking the button takes the user to the next page which is blank since the testing in Cypress is done within the login component. Furthermore, the next sprint should include end to end testing via Cypress and hopefully more to test one.
+
+The next component tested was the register component which was done similarly since the pages are comprised of similar aspects. The test first checks if the registration component was mounted; the next step populates the name fields ("first name" and "last name") and then populates the rest of the fields ("email", "password", and "confirm password"). The tests do pass since they involve simply inputting information into the input fields on the page. 
+
+Frontend----------------------------------------------------------------------------------------------------------------------------------
+
+This sprint was solely focused on testing, so the bulk of the work was learning to work with Cypress and have it properly installed in the repository so that tests can be created and ran. Outside of the tests, a confirmation component/page was created in order to be able to have users receive the email with a confirmation code and then enter said code into the input. This won't be shown off in this demo since we haven't been able to implement it with the function in the backend that creates the confirmation code and sends an email to the user.
 
 
