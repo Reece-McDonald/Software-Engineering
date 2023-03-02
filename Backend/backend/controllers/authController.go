@@ -3,6 +3,7 @@ package controllers
 import (
 	"Ga1ors/database"
 	"Ga1ors/models"
+	"Ga1ors/msgdatabase"
 	"Ga1ors/util"
 	"fmt"
 	"math/rand"
@@ -133,6 +134,35 @@ func Logout(c *fiber.Ctx) error {
 
 	return c.JSON(fiber.Map{
 		"message": "Successful log out",
+	})
+}
+
+func Message(c *fiber.Ctx) error { // Creates a message to be posted, the message and associated data is stored in a separate messages database.
+	cookie := c.Cookies("jwt")
+
+	id, _ := util.ParseJwt(cookie)
+
+	var msgs map[string]string
+
+	var user models.User
+
+	database.DB.Where("id = ?", id).First(&user)
+
+	if err := c.BodyParser(&msgs); err != nil {
+		return err
+	}
+
+	msg := models.Message{
+		IdNum:     user.Id,
+		FirstName: user.FirstName,
+		LastName:  user.LastName,
+		Message:   msgs["messagepost"],
+	}
+
+	msgdatabase.MDB.Create(&msg)
+
+	return c.JSON(fiber.Map{
+		"message": "Successful post",
 	})
 }
 

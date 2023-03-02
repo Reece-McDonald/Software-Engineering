@@ -1,12 +1,14 @@
 package models
 
-//"golang.org/x/crypto/bcrypt"
+import (
+	"gorm.io/gorm"
+)
 
 type Message struct {
-	Id        uint   `json:"id"`
+	IdNum     uint   `json:"id"`
 	FirstName string `json:"firstName"`
 	LastName  string `json:"lastName"`
-	message   string `json:"message"`
+	Message   string `json:"messagepost"`
 }
 
 /*
@@ -20,7 +22,7 @@ func (user *User) ComparePassword(password string) error {
 	return bcrypt.CompareHashAndPassword(user.Password, []byte(password))
 }
 */
-/*
+
 // Count Used in paginate to retrieve numbers of users in database.
 func (message *Message) Count(db *gorm.DB) int64 { //might have to change to mDB
 	var total int64
@@ -28,11 +30,6 @@ func (message *Message) Count(db *gorm.DB) int64 { //might have to change to mDB
 	db.Model(&Message{}).Count(&total)
 
 	return total
-}
-
-
-func (user *User) GetUser(db *gorm.DB) {
-
 }
 
 // Take Used in retrieving the number of users for the current page based on the offset and limit of
@@ -44,4 +41,3 @@ func (message *Message) Take(db *gorm.DB, limit int, offset int) interface{} {
 
 	return msgs
 }
-*/

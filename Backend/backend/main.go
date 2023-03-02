@@ -2,6 +2,7 @@ package main
 
 import (
 	"Ga1ors/database"
+	"Ga1ors/msgdatabase"
 	"Ga1ors/routes"
 
 	"github.com/gofiber/fiber/v2"
@@ -12,6 +13,8 @@ import (
 func main() {
 
 	database.Connect()
+
+	msgdatabase.ConnectMsg()
 
 	app := fiber.New()
 
