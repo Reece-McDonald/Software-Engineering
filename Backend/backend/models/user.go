@@ -6,17 +6,22 @@ import (
 )
 
 type User struct {
-	Id        uint   `json:"id"`
-	FirstName string `json:"firstName"`
-	LastName  string `json:"lastName"`
-	Email     string `json:"email" gorm:"unique"` // email should be unique in database
-	Password  []byte `json:"-"`                   // password won't show in api requests
+	Id          uint   `json:"id"`
+	FirstName   string `json:"firstName"`
+	LastName    string `json:"lastName"`
+	Email       string `json:"email" gorm:"unique"` // email should be unique in database
+	Password    []byte `json:"-"`                   // password won't show in api requests
+	PostedToday bool   `json:"postedToday"`
 }
 
 func (user *User) SetPassword(password string) {
 	userPassword, _ := bcrypt.GenerateFromPassword([]byte(password), 14)
 
 	user.Password = userPassword
+}
+
+func (user *User) posted() {
+	user.PostedToday = true
 }
 
 func (user *User) ComparePassword(password string) error {
