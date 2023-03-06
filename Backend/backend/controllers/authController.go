@@ -137,6 +137,7 @@ func Logout(c *fiber.Ctx) error {
 	})
 }
 
+// POST Request
 func Message(c *fiber.Ctx) error { // Creates a message to be posted, the message and associated data is stored in a separate messages database.
 	cookie := c.Cookies("jwt")
 
@@ -145,6 +146,15 @@ func Message(c *fiber.Ctx) error { // Creates a message to be posted, the messag
 	var msgs map[string]string
 
 	var user models.User
+
+	var t string
+	t = time.Now().Format(time.Kitchen)
+
+	var d string
+	d = time.Now().Format(time.Layout)[0:6]
+
+	var timeDate string
+	timeDate = d + t
 
 	database.DB.Where("id = ?", id).First(&user)
 
@@ -157,6 +167,7 @@ func Message(c *fiber.Ctx) error { // Creates a message to be posted, the messag
 		FirstName: user.FirstName,
 		LastName:  user.LastName,
 		Message:   msgs["messagepost"],
+		CTime:     timeDate,
 	}
 
 	msgdatabase.MDB.Create(&msg)

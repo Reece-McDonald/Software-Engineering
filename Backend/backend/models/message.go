@@ -9,6 +9,7 @@ type Message struct {
 	FirstName string `json:"firstName"`
 	LastName  string `json:"lastName"`
 	Message   string `json:"messagepost"`
+	CTime     string `json:"currenttime"`
 }
 
 /*
@@ -32,7 +33,7 @@ func (message *Message) Count(db *gorm.DB) int64 { //might have to change to mDB
 	return total
 }
 
-// Take Used in retrieving the number of users for the current page based on the offset and limit of
+// Take Used in retrieving the number of messages for the current page based on the offset and limit of
 // the pagination function.
 func (message *Message) Take(db *gorm.DB, limit int, offset int) interface{} {
 	var msgs []Message
