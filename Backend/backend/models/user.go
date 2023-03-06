@@ -24,6 +24,10 @@ func (user *User) posted() {
 	user.PostedToday = true
 }
 
+func (user *User) resetPosting() {
+	user.PostedToday = false
+}
+
 func (user *User) ComparePassword(password string) error {
 	return bcrypt.CompareHashAndPassword(user.Password, []byte(password))
 }
