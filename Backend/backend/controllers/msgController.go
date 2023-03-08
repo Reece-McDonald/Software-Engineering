@@ -79,11 +79,11 @@ func UpdateMsg(c *fiber.Ctx) error {
 func DeleteMsg(c *fiber.Ctx) error {
 	id, _ := strconv.Atoi(c.Params("id"))
 
-	user := models.User{
-		Id: uint(id),
+	msg := models.Message{
+		IdNum: uint(id),
 	}
 
-	database.DB.Delete(&user)
+	database.DB.Delete(&msg)
 
 	return nil
 }

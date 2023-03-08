@@ -25,7 +25,7 @@ func (user *User) ComparePassword(password string) error {
 */
 
 // Count Used in paginate to retrieve numbers of users in database.
-func (message *Message) Count(db *gorm.DB) int64 { //might have to change to mDB
+func (message *Message) Count(db *gorm.DB) int64 { //might have to change to MDB
 	var total int64
 
 	db.Model(&Message{}).Count(&total)
