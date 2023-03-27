@@ -1,0 +1,44 @@
+[
+    {
+        "firstName": "Ethan", 
+        "lastName": "Wobb",
+        "messagepost": "Test message 1"
+        
+    },
+
+    {
+        "firstName": "Reece", 
+        "lastName": "McDonald",
+        "messagepost": "Test message 2"
+        
+    },
+
+    {
+        "firstName": "Christian", 
+        "lastName": "Bello",
+        "messagepost": "Test message 3"
+        
+    },
+
+    {
+        "firstName": "Rhyan", 
+        "lastName": "Crespo",
+        "messagepost": "Test message 4"
+        
+    },
+
+    {
+        "firstName": "Ethan", 
+        "lastName": "Wobb",
+        "messagepost": "This message should be rejected since Ethan already posted"
+        
+    },
+
+
+    {
+        "firstName": "Char", 
+        "lastName": "Test",
+        "messagepost": "This message should be rejected since it does not meet the constraintest of the character limit abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890"
+        
+    }
+]

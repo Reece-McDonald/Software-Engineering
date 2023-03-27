@@ -3,6 +3,7 @@ package controllers
 import (
 	"Ga1ors/database"
 	"Ga1ors/models"
+	"Ga1ors/msgdatabase"
 	"Ga1ors/util"
 	"fmt"
 	"math/rand"
@@ -133,6 +134,58 @@ func Logout(c *fiber.Ctx) error {
 
 	return c.JSON(fiber.Map{
 		"message": "Successful log out",
+	})
+}
+
+// POST Request
+func Message(c *fiber.Ctx) error { // Creates a message to be posted, the message and associated data is stored in a separate messages database.
+	cookie := c.Cookies("jwt")
+
+	id, _ := util.ParseJwt(cookie)
+
+	var msgs map[string]string
+
+	var user models.User
+
+	var t string
+	t = time.Now().Format(time.Kitchen)
+
+	var d string
+	d = time.Now().Format(time.Layout)[0:6]
+
+	var timeDate string
+	timeDate = d + t
+
+	database.DB.Where("id = ?", id).First(&user)
+
+	if err := c.BodyParser(&msgs); err != nil {
+		return err
+	}
+
+	if len(msgs["messagepost"]) > 280 {
+		return c.JSON(fiber.Map{
+			"message": "Character count exceeds 280!",
+		})
+	}
+
+	if len(msgs["messagepost"]) <= 0 {
+		return c.JSON(fiber.Map{
+			"message": "Empty post, invalid!",
+		})
+	}
+
+	msg := models.Message{
+		IdNum:     user.Id,
+		FirstName: user.FirstName,
+		LastName:  user.LastName,
+		Message:   msgs["messagepost"],
+		CTime:     timeDate,
+	}
+
+	msgdatabase.MDB.Create(&msg)
+
+	return c.JSON(fiber.Map{
+		"message": "Successful post",
 	})
 }
 

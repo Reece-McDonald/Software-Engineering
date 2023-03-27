@@ -1,4 +1,5 @@
 User Stories (also on the Github wiki) https://github.com/Reece-McDonald/Software-Engineering
+Sprint 2 Progress Video: https://youtu.be/O-vHM5FQCuU
 
 1. As a socially active user, I want to be able to easily digest large amounts of content so that I can consume the website’s daily media in a reasonable amount of time.
 
@@ -98,7 +99,7 @@ email is input and the other tests for an incorrect password error being thrown 
 
 We have minor tests for our logout function, these are in a postman script and will be demonstrated in our video. A quick description of the tests is that one checks for a
 successful code, when the function runs properly, meaning that a successful logout was achieved. The other test is checking for the error code when a logout is attempted and fails
-this test will pass if the desired wrror code is detected. As of right now however, the error for logout is not achieveable outside of testing environments, as you are unable to
+this test will pass if the desired error code is detected. As of right now however, the error for logout is not achieveable outside of testing environments, as you are unable to
 logout if you aren't already logged in, which is how the error is thrown, but we figured in some edge case we weren't thinking of, having this and checking this error functionality
 is safer.
 
