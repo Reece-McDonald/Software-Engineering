@@ -10,11 +10,11 @@ describe('LoginComponent', () => {
       imports: [HttpClientTestingModule],
       providers: [LoginComponent]
     }));
-  
+
     it('mounts', () => {
       cy.mount(LoginComponent)
     })
-  
+
     it('fills in email and password', () => {
       cy.mount(LoginComponent)
       cy.get('[name = email]').type('christian.bello@ufl.edu')
@@ -23,10 +23,7 @@ describe('LoginComponent', () => {
 
     it('clicks on the register button', () => {
       cy.mount(LoginComponent)
-      cy.get('button[id="register"]').click()      
-
-      //cy.url().should("include","register") // going to assert URL but cypress doesn't register a change in URL for this
-
+      cy.get('button[id="register"]').click()
     } )
 
   })

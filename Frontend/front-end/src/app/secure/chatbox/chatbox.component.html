@@ -1,0 +1,33 @@
+<div class="gradient">
+  <div class="chat-container">
+    <h2 class="chat-header">Ga1ors</h2>
+
+    <div class="chat-messages">
+      <div class="message blue-bg">
+        <div class="message-sender">Rhyan</div>
+        <div class="message-text">Hey, testing</div>
+        <div class="message-timestamp">12:00 PM</div>
+      </div>
+
+      <div class="message gray-bg">
+        <div class="message-sender">Chris</div>
+        <div class="message-text">Hey, testing back</div>
+        <div class="message-timestamp">12:01 PM</div>
+      </div>
+
+      <div *ngFor="let message of messages" class="message blue-bg">
+        <div class="message-sender">Rhyan</div>
+        <div class="message-text">{{message}}</div>
+        <div class="message-timestamp">12:00 PM</div>
+      </div>
+    </div>
+
+    <form [formGroup]="chatMessage" (ngSubmit)="submit(); chatMessage.reset()" class="chat-input-form">
+      <input type="text" class="chat-input" required placeholder="Send Message" formControlName="message">
+      <button type="submit" class="button send-button">Send</button>
+    </form>
+
+    <button class="button clear-chat-button" type="button" (click)="clear()">Clear Chat</button>
+  </div>
+</div>
+
