@@ -12,6 +12,13 @@
   height: 100vh;
 }
 
+h2{
+  margin-top: 0px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
 .button {
   border: none;
   padding: 0.625em;
@@ -33,8 +40,8 @@
   border-radius: 0.5em;
   padding: 0.5em 1.25em;
   margin: auto;
-  max-width: 37.5em;
-  height: 37.5em;
+  max-width: 90em;
+  height: 100vh; /*#37.5em*/
   box-shadow: 0 0 0.5em 0.1em #c3c3c333;
 }
 
@@ -49,7 +56,7 @@
 }
 
 .chat-messages {
-  height: 23em;
+  height: 75vh;
   overflow-y: scroll;
 }
 
@@ -116,5 +123,6 @@
 
 .clear-chat-button {
   display: block;
+  /*align-content: left;*/
   margin: 0.625em auto;
 }

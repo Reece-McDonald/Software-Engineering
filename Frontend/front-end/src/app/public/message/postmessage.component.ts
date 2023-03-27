@@ -4,8 +4,8 @@ import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-message',
-  templateUrl: './message.component.html',
-  styleUrls: ['./message.component.css', './../public.component.css']
+  templateUrl: './postmessage.component.html',
+  styleUrls: ['./postmessage.component.css', './../public.component.css']
 })
 
 export class RegisterComponent implements OnInit {

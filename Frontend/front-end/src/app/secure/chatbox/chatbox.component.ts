@@ -7,6 +7,8 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./chatbox.component.css']
 })
 export class ChatboxComponent {
+
+  date = new Date()
   messages: string[]
 
   chatMessage = this.formBuilder.group({
@@ -18,6 +20,7 @@ export class ChatboxComponent {
   ) {
     this.messages = []
   }
+
 
   submit(): void {
     this.messages.push(<string>this.chatMessage.getRawValue().message);

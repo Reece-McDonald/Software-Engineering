@@ -12,13 +12,13 @@
       <div class="message gray-bg">
         <div class="message-sender">Chris</div>
         <div class="message-text">Hey, testing back</div>
-        <div class="message-timestamp">12:01 PM</div>
-      </div>
+        <div class="message-timestamp">{{date | date: 'hh:mm a'}}</div>
+      </div> 
 
       <div *ngFor="let message of messages" class="message blue-bg">
-        <div class="message-sender">Rhyan</div>
+        <div class="message-sender">Chris</div>
         <div class="message-text">{{message}}</div>
-        <div class="message-timestamp">12:00 PM</div>
+        <div class="message-timestamp">{{date | date: 'hh:mm a'}}</div>
       </div>
     </div>
 
