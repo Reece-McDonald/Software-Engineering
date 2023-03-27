@@ -2,7 +2,6 @@ package routes
 
 import (
 	"Ga1ors/controllers"
-	"Ga1ors/middleware"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -13,7 +12,7 @@ func Setup(app *fiber.App) {
 
 	// Middleware uses for making sure that a valid user is logged in
 	// Otherwise, other functions are not available.
-	app.Use(middleware.IsAuthenticated)
+	//app.Use(middleware.IsAuthenticated)
 
 	// Private Routes
 	app.Put("/api/users/info", controllers.UpdateInfo)
