@@ -26,17 +26,15 @@ func AllMsgs(c *fiber.Ctx) error {
 // Uses endpoints ['/api/msgs']
 // POST REQUEST
 func CreateMsg(c *fiber.Ctx) error {
-	var user models.User
+	var msg models.Message
 
-	if err := c.BodyParser(&user); err != nil {
+	if err := c.BodyParser(&msg); err != nil {
 		return err
 	}
 
-	user.SetPassword("1234")
+	msgdatabase.MDB.Create(&msg)
 
-	database.DB.Create(&user)
-
-	return c.JSON(user)
+	return c.JSON(msg)
 }
 
 // GetUser Allows for the retrieval of a particular user using their assigned
@@ -45,15 +43,16 @@ func CreateMsg(c *fiber.Ctx) error {
 func GetMsg(c *fiber.Ctx) error {
 	id, _ := strconv.Atoi(c.Params("id"))
 
-	user := models.User{
-		Id: uint(id),
+	msg := models.Message{
+		IdNum: uint(id),
 	}
 
-	database.DB.Find(&user)
+	msgdatabase.MDB.Find(&msg)
 
-	return c.JSON(user)
+	return c.JSON(msg)
 }
 
+/*
 // UpdateUser Allows for updating of a particular users using their
 // assigned ID in the database. ['/api/msgs/:id']
 // PUT REQUEST
@@ -71,7 +70,7 @@ func UpdateMsg(c *fiber.Ctx) error {
 	database.DB.Model(&user).Updates(user)
 
 	return c.JSON(user)
-}
+}*/
 
 // DeleteUser Allows for deleting of a particular users using their
 // assigned ID in the database. ['/api/msgs/:id']
