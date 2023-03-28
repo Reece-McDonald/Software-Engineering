@@ -12,18 +12,18 @@
       <div class="message gray-bg">
         <div class="message-sender">Chris</div>
         <div class="message-text">Hey, testing back</div>
-        <div class="message-timestamp">{{date | date: 'hh:mm a'}}</div>
-      </div> 
-
-      <div *ngFor="let message of messages" class="message blue-bg">
-        <div class="message-sender">Chris</div>
-        <div class="message-text">{{message}}</div>
-        <div class="message-timestamp">{{date | date: 'hh:mm a'}}</div>
+        <div class="message-timestamp">12:00 PM (WIP)</div>
       </div>
+
+<!--      <div *ngFor="let message of messages" class="message blue-bg">-->
+<!--        <div class="message-sender">Chris</div>-->
+<!--        <div class="message-text">{{message}}</div>-->
+<!--        <div class="message-timestamp">12:00 PM (WIP)</div>-->
+<!--      </div>-->
     </div>
 
-    <form [formGroup]="chatMessage" (ngSubmit)="submit(); chatMessage.reset()" class="chat-input-form">
-      <input type="text" class="chat-input" required placeholder="Send Message" formControlName="message">
+    <form [formGroup]="messageForm" (ngSubmit)="submit(); messageForm.reset()" class="chat-input-form">
+      <input type="text" class="chat-input" required placeholder="Send Message" formControlName="messagepost">
       <button type="submit" class="button send-button">Send</button>
     </form>
 

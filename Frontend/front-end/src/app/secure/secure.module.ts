@@ -3,9 +3,8 @@ import {CommonModule} from '@angular/common';
 import {NavComponent} from "./nav/nav.component";
 import {MenuComponent} from "./menu/menu.component";
 import {SecureComponent} from './secure.component';
-import {TestChatComponent} from "./test-chat/test-chat.component";
 import {RouterLink} from "@angular/router";
-import { ChatboxComponent } from './chatbox/chatbox.component';
+import {ChatboxComponent} from './chatbox/chatbox.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
 
@@ -13,7 +12,6 @@ import {ReactiveFormsModule} from "@angular/forms";
   declarations: [
     NavComponent,
     MenuComponent,
-    TestChatComponent,
     SecureComponent,
     ChatboxComponent,
   ],

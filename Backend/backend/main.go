@@ -2,7 +2,6 @@ package main
 
 import (
 	"Ga1ors/database"
-	"Ga1ors/msgdatabase"
 	"Ga1ors/routes"
 
 	//"time"
@@ -16,7 +15,7 @@ func main() {
 
 	database.Connect()
 
-	msgdatabase.ConnectMsg()
+	database.ConnectMsg()
 
 	app := fiber.New()
 

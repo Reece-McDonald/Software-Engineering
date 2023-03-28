@@ -25,4 +25,9 @@ describe('RegisterComponent', () => {
     cy.get('[name=password]').type('test')
     cy.get('[name=passwordConfirm]').type('test')
   })
+
+  it('empty fields', () => {
+    cy.mount(RegisterComponent)
+    cy.get('[name=createAccountBtn]').click()
+  })
 })

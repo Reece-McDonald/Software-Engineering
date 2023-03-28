@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-chatbox',
@@ -7,26 +8,27 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./chatbox.component.css']
 })
 export class ChatboxComponent {
-
-  date = new Date()
-  messages: string[]
-
-  chatMessage = this.formBuilder.group({
-    message: ''
-  });
+  messageForm!: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) {
-    this.messages = []
   }
 
+  ngOnInit(): void {
+    this.messageForm = this.formBuilder.group({
+      messagepost: ''
+    });
+  }
 
   submit(): void {
-    this.messages.push(<string>this.chatMessage.getRawValue().message);
+    this.authService.createMessage(this.messageForm.getRawValue()).subscribe(
+      res => console.log(res)
+    );
   }
 
   clear(): void {
-    this.messages.splice(0);
+    // this.messages.splice(0);
   }
 }

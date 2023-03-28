@@ -1,6 +1,8 @@
-export interface Message {
-    id: number;
-    firstName: string;
-    lastName: string;
-    message: string;
-  }
+export interface Message
+{
+  id: number;
+  firstName: string;
+  lastName: string;
+  message: string;
+  messageTime: string
+}

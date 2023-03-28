@@ -30,15 +30,15 @@ export class AuthService {
     });
   }
 
-  message(): Observable<Message> {
-    return this.http.get<Message>(`${environment.api}/message`, {
-      withCredentials: true
-    });
-  }
-
   logout(): Observable<void> {
     return this.http.post<void>(`${environment.api}/logout`, {}, {
       withCredentials: true
     })
+  }
+
+  createMessage(data: any): Observable<Message> {
+    return this.http.post<Message>(`${environment.api}/forum`, data, {
+      withCredentials: true
+    });
   }
 }

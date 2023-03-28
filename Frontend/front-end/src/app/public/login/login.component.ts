@@ -25,9 +25,21 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form.getRawValue());
+    // console.log(this.form.getRawValue());
     //window.alert('Login Success');
-    this.authService.login(this.form.getRawValue()).subscribe(() => this.router.navigate(['/']));
+
+    if (this.checkIfEmpty(this.form.get(['email'])?.value)) {
+      window.alert("Empty field");
+    }
+    else {
+      this.authService.login(this.form.getRawValue()).subscribe(() => this.router.navigate(['/']));
+    }
+
+  }
+
+  // check if user inputs are empty
+  checkIfEmpty(value: string): boolean {
+    return value === null || value.trim().length === 0;
   }
 
 }

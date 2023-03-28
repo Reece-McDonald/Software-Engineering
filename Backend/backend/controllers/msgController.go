@@ -3,7 +3,6 @@ package controllers
 import (
 	"Ga1ors/database"
 	"Ga1ors/models"
-	"Ga1ors/msgdatabase"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
@@ -19,7 +18,7 @@ import (
 func AllMsgs(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page", "1"))
 
-	return c.JSON(models.Paginate(msgdatabase.MDB, &models.Message{}, page))
+	return c.JSON(models.Paginate(database.MDB, &models.Message{}, page))
 }
 
 // CreateUser Allows for the creation of a user using JSON.
@@ -32,7 +31,7 @@ func CreateMsg(c *fiber.Ctx) error {
 		return err
 	}
 
-	msgdatabase.MDB.Create(&msg)
+	database.MDB.Create(&msg)
 
 	return c.JSON(msg)
 }
@@ -47,7 +46,7 @@ func GetMsg(c *fiber.Ctx) error {
 		IdNum: uint(id),
 	}
 
-	msgdatabase.MDB.Find(&msg)
+	database.MDB.Find(&msg)
 
 	return c.JSON(msg)
 }

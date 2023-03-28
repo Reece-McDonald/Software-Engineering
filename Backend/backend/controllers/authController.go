@@ -3,7 +3,6 @@ package controllers
 import (
 	"Ga1ors/database"
 	"Ga1ors/models"
-	"Ga1ors/msgdatabase"
 	"Ga1ors/util"
 	"fmt"
 	"math/rand"
@@ -182,7 +181,7 @@ func Message(c *fiber.Ctx) error { // Creates a message to be posted, the messag
 		CTime:     timeDate,
 	}
 
-	msgdatabase.MDB.Create(&msg)
+	database.MDB.Create(&msg)
 
 	return c.JSON(fiber.Map{
 		"message": "Successful post",
