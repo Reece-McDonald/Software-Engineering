@@ -8,8 +8,8 @@ type Message struct {
 	IdNum     uint   `json:"id"`
 	FirstName string `json:"firstName"`
 	LastName  string `json:"lastName"`
-	Message   string `json:"messagepost"`
-	CTime     string `json:"currenttime"`
+	Message   string `json:"messagePost"`
+	CTime     string `json:"currentTime"`
 }
 
 /*

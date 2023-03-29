@@ -1,0 +1,37 @@
+<h1 id="title">Ga1ors</h1>
+
+<main class="form-signin w-100 m-auto">
+  <form name="registerForm" (submit)="submit()">
+    <img id="logo" class="mb-4 center" src="https://1000logos.net/wp-content/uploads/2021/06/Florida-Gators-logo.png" alt="" width="90" height="65">
+    <h1 class="h3 mb-3 fw-normal">Please register</h1>
+
+    <div class="form-floating">
+      <input [(ngModel)]="firstName" name="firstName" class="form-control mb-2" id="firstName" placeholder="First Name">
+      <label for="firstName">First Name</label>
+    </div>
+
+    <div class="form-floating">
+      <input [(ngModel)]="lastName" name="lastName" class="form-control mb-2" id="lastName" placeholder="Last Name">
+      <label for="lastName">Last Name</label>
+    </div>
+
+    <div class="form-floating">
+      <input [(ngModel)]="email" name="email" type="email" class="form-control mb-2" id="email" placeholder="UF Email address">
+      <label for="email">UF Email Address</label>
+    </div>
+
+    <div class="form-floating">
+      <input [(ngModel)]="password" name="password" type="password" class="form-control mb-2" id="password" placeholder="Password">
+      <label for="password">Password</label>
+    </div>
+
+    <div class="form-floating">
+      <input [(ngModel)]="passwordConfirm" name="passwordConfirm" type="password" class="form-control" id="passwordConfirm" placeholder="Password Confirm">
+      <label for="passwordConfirm">Password Confirm</label>
+    </div>
+
+    <button name="createAccountBtn" class="w-100 btn btn-lg btn-primary fade-in-text" type="submit">Create Account</button>
+    <button routerLink="/login" class="mt-2 w-100 btn btn-lg btn-primary fade-in-text">Login</button>
+
+  </form>
+</main>

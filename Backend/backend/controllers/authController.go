@@ -161,13 +161,13 @@ func Message(c *fiber.Ctx) error { // Creates a message to be posted, the messag
 		return err
 	}
 
-	if len(msgs["messagepost"]) > 280 {
+	if len(msgs["messagePost"]) > 280 {
 		return c.JSON(fiber.Map{
 			"message": "Character count exceeds 280!",
 		})
 	}
 
-	if len(msgs["messagepost"]) <= 0 {
+	if len(msgs["messagePost"]) <= 0 {
 		return c.JSON(fiber.Map{
 			"message": "Empty post, invalid!",
 		})
@@ -177,7 +177,7 @@ func Message(c *fiber.Ctx) error { // Creates a message to be posted, the messag
 		IdNum:     user.Id,
 		FirstName: user.FirstName,
 		LastName:  user.LastName,
-		Message:   msgs["messagepost"],
+		Message:   msgs["messagePost"],
 		CTime:     timeDate,
 	}
 
