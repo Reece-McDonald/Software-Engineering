@@ -75,13 +75,14 @@ func UpdateMsg(c *fiber.Ctx) error {
 // assigned ID in the database. ['/api/msgs/:id']
 // Delete REQUEST
 func DeleteMsg(c *fiber.Ctx) error {
+
 	id, _ := strconv.Atoi(c.Params("id"))
 
 	msg := models.Message{
 		IdNum: uint(id),
 	}
 
-	database.DB.Delete(&msg)
+	database.MDB.Delete(&msg)
 
 	return nil
 }

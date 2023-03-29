@@ -182,6 +182,7 @@ func Message(c *fiber.Ctx) error { // Creates a message to be posted, the messag
 	}
 
 	database.MDB.Create(&msg)
+	//user.PostedToday = true
 
 	return c.JSON(fiber.Map{
 		"message": "Successful post",

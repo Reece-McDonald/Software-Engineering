@@ -25,7 +25,7 @@ func Setup(app *fiber.App) {
 	app.Get("/api/messages", controllers.AllMsgs)
 	app.Post("/api/message", controllers.Message)
 	app.Post("/api/messages", controllers.CreateMsg)
-	app.Delete("/api/messages", controllers.DeleteMsg)
+	app.Delete("/api/messages:id", controllers.DeleteMsg)
 
 	app.Get("/api/users", controllers.AllUsers)
 	app.Post("/api/users", controllers.CreateUser)
