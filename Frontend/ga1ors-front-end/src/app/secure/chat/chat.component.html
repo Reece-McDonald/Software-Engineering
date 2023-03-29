@@ -6,8 +6,8 @@
     </div>
 
     <form [formGroup]="messageForm" (ngSubmit)="submit(); messageForm.reset()" class="chat-input-form">
-      <input type="text" class="chat-input" required placeholder="Send Message" formControlName="messagePost">
-      <button routerLink="/messages" type="submit" class="button send-button">Send</button>
+      <input type="text" class="chat-input" name="message" required placeholder="Send Message" formControlName="messagePost">
+      <button routerLink="/messages" type="submit" id ="send" class="button send-button">Send</button>
     </form>
   </div>
 </div>
