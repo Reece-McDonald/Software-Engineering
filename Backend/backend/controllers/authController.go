@@ -162,12 +162,14 @@ func Message(c *fiber.Ctx) error { // Creates a message to be posted, the messag
 	}
 
 	if len(msgs["messagePost"]) > 280 {
+		c.Status(400)
 		return c.JSON(fiber.Map{
 			"message": "Character count exceeds 280!",
 		})
 	}
 
 	if len(msgs["messagePost"]) <= 0 {
+		c.Status(400)
 		return c.JSON(fiber.Map{
 			"message": "Empty post, invalid!",
 		})
