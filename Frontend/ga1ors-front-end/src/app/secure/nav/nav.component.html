@@ -2,6 +2,7 @@
   <a routerLink="/" class="navbar-brand navbar-custom sticky-top col-lg-0 me-0 px-4 fs-6">Ga1ors</a>
   <nav class="my-2 my-md-0 mr-md-3">
     <a routerLink="/profile" class="p-2 text-white text-decoration-none">{{user?.firstName}} {{user?.lastName}}</a>
+    <a routerLink="/profile" class="p-1 text-white text-decoration-none"> Profile</a>
     <a routerLink="/register" class="p-2 text-white text-decoration-none"> Create Account </a>
     <a routerLink="/login" class="p-2 text-white text-decoration-none" (click)="logout()">Sign Out</a>
   </nav>
