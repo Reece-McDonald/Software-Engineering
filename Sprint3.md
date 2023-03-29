@@ -1,5 +1,5 @@
 User Stories (also on the Github wiki) https://github.com/Reece-McDonald/Software-Engineering
-Sprint 2 Progress Video: https://youtu.be/O-vHM5FQCuU
+Sprint 3 Progress Video:
 
 1. As a socially active user, I want to be able to easily digest large amounts of content so that I can consume the website’s daily media in a reasonable amount of time.
 
@@ -20,12 +20,12 @@ Issues (found in the issues section of the Github) see link above ^^
 
 (Successfully completed)-------------------------------------------------------------------------------------------------------
 
--#1 Character Limits 
+-#1 Character Limits (From Sprint 2)
 Based on a user story, character limits were desired. We will look to implement this feature request.
 
 This problem has been solved as Ethan implemented a character limit per message for each user.
 
--#7 Login Page
+-#7 Login Page (From Sprint 2)
 
 As a social media user that dislikes the anonymity of most social media sites, 
 I want a place to form local connections so that I can meet like minded people around me.
@@ -74,6 +74,9 @@ The reason why this wasn't completed is that, as previously stated, this is the 
 statement /user story and it's not feasible for a single sprint. We have the groundwork laid to start implementing the forum through Sprint 3. 
 A feature we could add around Sprint 4 is a tag feature that allows the users to tag themselves with their major. 
 
+(Sprint 3 Update)
+The forum implementation has made great progress this sprint, as it stands the messages features is about complete, what's missing currently is the smaller features of this such as the like button or the tags
+
 -#5 Refreshing Daily Content
 
 Users want new daily content, we intend on doing this through the system of wiping the forum every 24 hours, and having only 1% of the student 
@@ -83,6 +86,9 @@ The reason why we haven't yet implemented this is because we don't quite know ho
 same users to stay up and post every night as the message cap would be met before someone opens it up the next day. One idea is to rotate the users
 that can post each day so that the content doesn't grow stale. We could softlock a user for over 24 hours so that others may get a chance. We have 
 yet to revisit this as we haven't implemented the forum feature at all yet, so we are not worried about this too much until we have the forum implemented.
+
+(Sprint 3 Update)
+This sprint we have been mainly focused with simply getting the messages function working, by the end we had researched a few ways to implement this feature, however there currently is not an implementation of this, additionally we are looking into capping the database to only accept a maximum number of messages
 
 -#6 Like Button
 As a person who enjoys interacting with content, I want there to be a like button so I can support content I enjoy on the website.
