@@ -9,7 +9,7 @@ import (
 // Paginate Allows for the outputting of database data into JSON output.
 // Each page is limited to 20 users. Once the limit has been reached, a new page is created.
 func Paginate(db *gorm.DB, entity Entity, page int) fiber.Map {
-	limit := 20
+	limit := 25
 	offset := (page - 1) * limit
 
 	data := entity.Take(db, limit, offset)

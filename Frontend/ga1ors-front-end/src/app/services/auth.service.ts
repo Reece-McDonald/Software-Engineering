@@ -39,6 +39,6 @@ export class AuthService {
   }
 
   createMessage(data: any): Observable<Message> {
-    return this.http.post<Message>(`${environment.api}/forum`, data);
+    return this.http.post<Message>(`${environment.api}/message`, data);
   }
 }

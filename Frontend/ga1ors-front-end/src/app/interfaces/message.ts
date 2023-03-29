@@ -3,5 +3,5 @@ export interface Message {
   firstName: string;
   lastName: string;
   messagePost: string;
-  messageTime: string
+  currentTime: string
 }

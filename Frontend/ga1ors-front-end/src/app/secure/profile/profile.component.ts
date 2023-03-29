@@ -6,7 +6,7 @@ import {Auth} from "../../classes/auth";
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css', './../secure.component.css']
 })
 export class ProfileComponent {
   infoForm!: FormGroup;

@@ -12,6 +12,11 @@
   height: 100vh;
 }*/
 
+body{
+  background-color: rgb(2, 5, 23);
+}
+
+
 h2{
   margin-top: 0;
   margin-bottom: 5px;
@@ -46,16 +51,6 @@ h2{
   /* box-shadow: 0 0 0.5em 0.1em #c3c3c333; */
 }
 
-.chat-header {
-  margin-bottom: 1em;
-  color: white;
-}
-
-.chat-header h2 {
-  font-size: 1.25em;
-  font-weight: bold;
-}
-
 .chat-messages {
   height: 75vh;
   width: 45%;
@@ -69,30 +64,7 @@ h2{
   display: none;
 }
 
-.message {
-  padding: 0.625em;
-  border-radius: 1em;
-  margin-bottom: 0.625em;
-  display: flex;
-  flex-direction: column;
-  color: white;
-}
 
-.message-sender {
-  font-weight: bold;
-  margin-bottom: 0.31em;
-}
-
-.message-text {
-  font-size: 1em;
-  margin-bottom: 0.31em;
-  word-wrap: break-word;
-}
-
-.message-timestamp {
-  font-size: 0.75em;
-  text-align: right;
-}
 
 .blue-bg {
   background-color: #1c9bef;

@@ -22,10 +22,10 @@ func Setup(app *fiber.App) {
 	app.Get("/api/user", controllers.User)
 	app.Post("/api/logout", controllers.Logout)
 
-	app.Get("/api/msgs", controllers.AllMsgs)
-	app.Post("/api/forum", controllers.Message)
-	app.Post("/api/msgs", controllers.CreateMsg)
-	app.Delete("/api/msgs", controllers.DeleteMsg)
+	app.Get("/api/messages", controllers.AllMsgs)
+	app.Post("/api/message", controllers.Message)
+	app.Post("/api/messages", controllers.CreateMsg)
+	app.Delete("/api/messages", controllers.DeleteMsg)
 
 	app.Get("/api/users", controllers.AllUsers)
 	app.Post("/api/users", controllers.CreateUser)
