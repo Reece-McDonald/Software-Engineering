@@ -8,6 +8,7 @@ import {AuthService} from "../../services/auth.service";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css', './../public.component.css']
 })
+
 export class LoginComponent implements OnInit {
   form!: FormGroup
 
@@ -41,5 +42,4 @@ export class LoginComponent implements OnInit {
   checkIfEmpty(value: string): boolean {
     return value === null || value.trim().length === 0;
   }
-
 }

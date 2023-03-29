@@ -8,8 +8,8 @@ import {Message} from "../interfaces/message";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
 
+export class AuthService {
   constructor(
     protected http: HttpClient) {
   }
