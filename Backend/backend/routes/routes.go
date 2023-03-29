@@ -25,12 +25,14 @@ func Setup(app *fiber.App) {
 	app.Get("/api/messages", controllers.AllMsgs)
 	app.Post("/api/message", controllers.Message)
 	app.Post("/api/messages", controllers.CreateMsg)
-	app.Delete("/api/messages", controllers.DeleteMsg)
+	app.Delete("/api/messages:id", controllers.DeleteMsg)
 
 	app.Get("/api/users", controllers.AllUsers)
 	app.Post("/api/users", controllers.CreateUser)
 	app.Get("/api/users/:id", controllers.GetUser)
 	app.Put("/api/users/:id", controllers.UpdateUser)
 	app.Delete("/api/users/:id", controllers.DeleteUser)
-
+	
+	//app.Post("/api/users", controllers.sendEmail)   //Routes for later verification use
+	//app.Get("/api/users/:id", controllers.sendEmail)
 }

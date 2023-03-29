@@ -1,5 +1,5 @@
 User Stories (also on the Github wiki) https://github.com/Reece-McDonald/Software-Engineering
-Sprint 3 Progress Video:
+Sprint 3 Progress Video: https://youtu.be/xvFZjo5PgG0
 
 1. As a socially active user, I want to be able to easily digest large amounts of content so that I can consume the website’s daily media in a reasonable amount of time.
 
@@ -98,11 +98,11 @@ we're hoping to have this complete by Sprint 3 (Sprint 4 at the latest). Still a
 no way for us to implement this yet.
 
 (Sprint 3 Update)
-After further working with the messaging system, we found that the like system is a smaller subcomponent that can be implemented later so that we can focus on working on the cumbersome message system, therefore we hope to have this implemented in sprint 4 along with visual changes to the website. 
+After further working with the messaging system, we found that the like system is a smaller subcomponent that can be implemented later so that we can focus on working on the message system, therefore we hope to have this implemented in sprint 4 along with visual changes to the website. 
 
 Backend Tests -------------------------------------------------------------------------------------------------------------------------
 
-For this sprint the goal of both teams was to work on the message system, compared to last sprint where we had multiple features working, we decided this sprint to focus soley on the message system as it is the heart and soul of our program.
+For this sprint the goal of both teams was to work on the message system, compared to last sprint where we had multiple features working, we decided this sprint to focus solely on the message system as it is the heart and soul of our program.
 
 For the message system, we are using postman tests once again to test the functionality of our backened API. The postman tests currently tests the functionality of sending and recieveing messages from the message database
 
@@ -115,16 +115,21 @@ Backend API --------------------------------------------------------------------
 With this sprint, the Backend API has been updated to include another MySQL database to house the messages posted on the website, with the creation of this we set up similar functions to that of the User database, only this time dealing with message objects. Additional routes were set up as well so that messages can be retrieved and displayed by the front end, and sent and stored in the backend. Some of the current functions interacting with the message database are the createMsg function which creates a message object from the user input and passes it to the DB, additionally there is AllMsgs which is used to return messages already stored within the DB, this along with the routes allows for Users to create and post messages and view already posted content. Additional functions includes deleteMsg which allows for the deletion of a message from the database. Currently on a user level we are not sure whether to give users access to this feature, currently it exists to remove inappropriate messages posted to the forum. Topic is still up for debate on whether to allow users to ddelete their posted messages and if so, if this affects their one post per day limit.
 
 
-Frontend Tests --------------------------------------------------------------------------------------------------------------------------- 
+Frontend Tests (including previous sprints)------------------------------------------------------------------------------------------------ 
 
 The focus of the frontend team for this sprint was moreso the testing aspect of our current components. The main focus of the testing comprised of the login and registration components since they are the most complete components of the frontend.
 
 The Cypress test first examines if the login component has been mounted properly before proceeding to the next steps in the test. The test then examines if the fields in the login page are filled by typing in a sample email and password into the input fields; furthermore, the test then clicks on the register button and demonstrates that clicking the button takes the user to the next page which is blank since the testing in Cypress is done within the login component. Furthermore, the next sprint should include end to end testing via Cypress and hopefully more to test one.
 
-The next component tested was the register component which was done similarly since the pages are comprised of similar aspects. The test first checks if the registration component was mounted; the next step populates the name fields ("first name" and "last name") and then populates the rest of the fields ("email", "password", and "confirm password"). The tests do pass since they involve simply inputting information into the input fields on the page. 
+The next component tested was the register component which was done similarly since the pages are comprised of similar aspects. The test first checks if the registration component was mounted; the next step populates the name fields ("first name" and "last name") and then populates the rest of the fields ("email", "password", and "confirm password"). The tests do pass since they involve simply inputting information into the input fields on the page.  
+
 
 Frontend----------------------------------------------------------------------------------------------------------------------------------
+As previously stated, this Sprint was mainly focused on being able to get messages input into the front-end to be able to be established in the backend. The message page was updated (from Sprint 2) and incorporated into the routing and can take in messages given by a user. The only problem is that a message will be sent but isn't able to be displayed yet which we will have finished by Sprint 4. Furthermore, interfaces for users and messages were added in order to be able to emulate the user and message objects of the backend and send them to the backend.
 
+Slight tweaks were made to the visual aspects of the pages seen on the front end, such as fixing certain whitespaces and changing the fonts to line up with the pages and their purposes(signing in or registering for an account). Most of the things done were also just reconfiguring the structure of the front end to improve said structures.
+
+OLD---------------------------------------------------------------------------------------------------------------------------------------
 This sprint was solely focused on testing, so the bulk of the work was learning to work with Cypress and have it properly installed in the repository so that tests can be created and ran. Outside of the tests, a confirmation component/page was created in order to be able to have users receive the email with a confirmation code and then enter said code into the input. This won't be shown off in this sprint demo since we haven't been able to implement it with the function in the backend that creates the confirmation code and sends an email to the user.
 
 This page and the actual messaging on the frontend is a goal to be completed by the end of Sprint 3 so that we can then work on integration of messages and fix up semantics involving logging in and attributing messages to a user. 
