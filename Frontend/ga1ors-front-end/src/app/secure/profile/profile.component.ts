@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Auth} from "../../classes/auth";
@@ -8,7 +8,7 @@ import {Auth} from "../../classes/auth";
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css', './../secure.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit{
   infoForm!: FormGroup;
   passwordForm!: FormGroup;
 
