@@ -8,7 +8,7 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./postmessage.component.css', './../public.component.css']
 })
 
-export class RegisterComponent implements OnInit {
+export class PostMessageComponent implements OnInit {
   id = '';
   firstName = '';
   lastName = '';
