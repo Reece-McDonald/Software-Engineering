@@ -4,7 +4,6 @@ import (
 	"Ga1ors/database"
 	"Ga1ors/models"
 	"Ga1ors/util"
-	"fmt"
 	"math/rand"
 	"strconv"
 	"time"
@@ -45,7 +44,7 @@ func Register(c *fiber.Ctx) error { // I believe this should be good. TODO: Only
 
 	user.SetPassword(userRegisterInformation["password"])
 
-	//ver := sendEmail(userRegisterInformation["email"])
+	//sendEmail(userRegisterInformation["email"])
 	//if userRegisterInformation["verificationCode"] == strconv.Itoa(ver){
 	database.DB.Create(&user)
 	//}
@@ -224,7 +223,7 @@ func ValidUFEmail(e string) bool { // Function to inform user their email isn't 
 	if len(e) < 9 { // Checks if valid size, which is at least 9 chars, 8 for "@ufl.edu" and 1 for at least one preceding character.
 		return false // returns false if the input email is less than a valid email length
 	}
-	var email int = len(e) - 8               // email will store the length of the email without "@uf.edu" for parsing of the username later
+	var email int = len(e) - 8               // email will store the length of the email without "@ufu.edu" for parsing of the username later
 	var dom string = string(e[email:len(e)]) // dom will store the final 8 chars which should be the "@ufl.edu" for comparison
 	if dom != "@ufl.edu" {                   // if-else for checking if the valid domain of "@ufl.edu" is in dom, if so, loop will break and UNinput is updated with the first part of the email
 		return false // returns false if the dom variable doesn't include the proper domain.
@@ -282,7 +281,6 @@ func sendEmail(to string) int { //func will return verCode which will be used to
 	email := gomail.NewDialer("smtp.gmail.com", 587, "NOREPLY.Ga1ors@gmail.com", "lcopgjjgrotttwpu") //email send func
 
 	if err := email.DialAndSend(message); err != nil { //error catch
-		fmt.Println(err)
 		panic(err)
 	}
 	return verCode //return verification code
