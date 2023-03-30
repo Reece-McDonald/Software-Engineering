@@ -1,6 +1,5 @@
 User Stories (also on the Github wiki) https://github.com/Reece-McDonald/Software-Engineering
-Sprint 3 Progress Video: https://youtu.be/xvFZjo5PgG0
-Sprint 3 Front-end video: https://drive.google.com/file/d/1Tu2d5VTGa68DYo71tJesSfbpqhmesrK1/view?usp=sharing
+Sprint 3 Progress Video: https://youtu.be/60p8UxdCbEw 
 
 1. As a socially active user, I want to be able to easily digest large amounts of content so that I can consume the website’s daily media in a reasonable amount of time.
 
