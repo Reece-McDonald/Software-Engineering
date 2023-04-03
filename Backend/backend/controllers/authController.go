@@ -271,7 +271,7 @@ func sendEmail(to string) int { //func will return verCode which will be used to
 	min := 10000
 	max := 99999
 	verCode := (rand.Intn(max-min+1) + min)
-
+	/*
 	message := gomail.NewMessage() //message creation
 	message.SetHeader("From", "NOREPLY.Ga1ors@gmail.com")
 	message.SetHeader("To", to)
@@ -283,5 +283,6 @@ func sendEmail(to string) int { //func will return verCode which will be used to
 	if err := email.DialAndSend(message); err != nil { //error catch
 		panic(err)
 	}
+	*/
 	return verCode //return verification code
 }
