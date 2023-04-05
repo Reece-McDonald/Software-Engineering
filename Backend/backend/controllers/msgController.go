@@ -80,15 +80,9 @@ func UpdateMsg(c *fiber.Ctx) error {
 // DeleteUser Allows for deleting of a particular users using their
 // assigned ID in the database. ['/api/msgs/:id']
 // Delete REQUEST
-func DeleteMsg(c *fiber.Ctx) error {
+func DeleteMsgs(c *fiber.Ctx) error {
 
-	id, _ := strconv.Atoi(c.Params("id"))
-
-	msg := models.Message{
-		IdNum: uint(id),
-	}
-
-	database.MDB.Delete(&msg)
+	database.MDB.Exec("DELETE FROM messages")
 
 	return nil
 }
