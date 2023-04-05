@@ -21,6 +21,12 @@ func AllMsgs(c *fiber.Ctx) error {
 	return c.JSON(models.Paginate(database.MDB, &models.Message{}, page))
 }
 
+func messageCount(c *fiber.Ctx) int64 {
+	var count int64
+	database.MDB.Model(&models.Message{}).Count(&count)
+	return count
+}
+
 // CreateUser Allows for the creation of a user using JSON.
 // Uses endpoints ['/api/msgs']
 // POST REQUEST
