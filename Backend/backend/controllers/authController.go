@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
-	"gopkg.in/gomail.v2"
+	//"gopkg.in/gomail.v2"
 )
 
 // Register Allows for the registering of a user. Uses endpoint ['/api/register']
@@ -143,6 +143,13 @@ func Message(c *fiber.Ctx) error { // Creates a message to be posted, the messag
 
 	var msgs map[string]string
 
+	if messageCount(c) >= 100 { // This checks to ensure the number of messages is not above the daily alloted 100 messages.
+		c.Status(400)
+		return c.JSON(fiber.Map{
+			"message": "Forum post limit reached!",
+		})
+	}
+
 	var user models.User
 
 	var t string
@@ -272,17 +279,17 @@ func sendEmail(to string) int { //func will return verCode which will be used to
 	max := 99999
 	verCode := (rand.Intn(max-min+1) + min)
 	/*
-	message := gomail.NewMessage() //message creation
-	message.SetHeader("From", "NOREPLY.Ga1ors@gmail.com")
-	message.SetHeader("To", to)
-	message.SetHeader("Subject", "Ga1ors Verification E-mail")
-	message.SetBody("text/plain", "Thank you for creating your Ga1ors Account! Verification Code: "+strconv.Itoa(verCode))
+		message := gomail.NewMessage() //message creation
+		message.SetHeader("From", "NOREPLY.Ga1ors@gmail.com")
+		message.SetHeader("To", to)
+		message.SetHeader("Subject", "Ga1ors Verification E-mail")
+		message.SetBody("text/plain", "Thank you for creating your Ga1ors Account! Verification Code: "+strconv.Itoa(verCode))
 
-	email := gomail.NewDialer("smtp.gmail.com", 587, "NOREPLY.Ga1ors@gmail.com", "lcopgjjgrotttwpu") //email send func
+		email := gomail.NewDialer("smtp.gmail.com", 587, "NOREPLY.Ga1ors@gmail.com", "lcopgjjgrotttwpu") //email send func
 
-	if err := email.DialAndSend(message); err != nil { //error catch
-		panic(err)
-	}
+		if err := email.DialAndSend(message); err != nil { //error catch
+			panic(err)
+		}
 	*/
 	return verCode //return verification code
 }
