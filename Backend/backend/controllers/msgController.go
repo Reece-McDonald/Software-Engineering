@@ -82,7 +82,12 @@ func UpdateMsg(c *fiber.Ctx) error {
 // Delete REQUEST
 func DeleteMsgs(c *fiber.Ctx) error {
 
-	database.MDB.Exec("DELETE FROM messages")
+	currentSessionTime := time.Now().UTC()			//these variables need to be created when webpage is loaded and passed into delete function for comparison
+	nextDay := currentSessionTime.AddDate(0, 0, 1)	// currently won't work cause vars capture to specific time rather than just date, working on fix
 
-	return nil
+	equal := nextDay.Equal(time.Now().UTC())
+	if !equal {
+		database.MDB.Exec("DELETE FROM messages")
+	}
+
 }
