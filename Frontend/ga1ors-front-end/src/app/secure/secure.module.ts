@@ -6,7 +6,6 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import { ChatComponent } from './chat/chat.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ProfileComponent } from './profile/profile.component';
-import { MessagesComponent } from './chat/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +13,6 @@ import { MessagesComponent } from './chat/messages/messages.component';
     SecureComponent,
     ChatComponent,
     ProfileComponent,
-    MessagesComponent,
   ],
   exports: [
     SecureComponent

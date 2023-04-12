@@ -12,17 +12,18 @@
   height: 100vh;
 }*/
 
-body{
+body {
   background-color: rgb(2, 5, 23);
 }
 
 
-h2{
+h2 {
   margin-top: 0;
   margin-bottom: 5px;
   text-align: center;
   font-weight: bold;
 }
+
 /*https://material.angular.io/components/sidenav/overview*/
 .button {
   border: none;
@@ -63,8 +64,6 @@ h2{
 .chat-messages::-webkit-scrollbar {
   display: none;
 }
-
-
 
 .blue-bg {
   background-color: #1c9bef;

@@ -1,7 +1,7 @@
 <body>
 <div class="gradient">
   <div class="chat-container">
-    <div class="chat-messages">
+    <div class="chat-messages" #scrollContainer>
       <div *ngFor="let message of allMessages" class="message blue-bg">
         <div class="message-sender">{{message.firstName}} {{message.lastName}}</div>
         <div class="message-text">{{message.messagePost}}</div>

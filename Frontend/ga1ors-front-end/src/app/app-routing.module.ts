@@ -6,7 +6,6 @@ import {SecureComponent} from "./secure/secure.component";
 import {PublicComponent} from "./public/public.component";
 import {ChatComponent} from "./secure/chat/chat.component";
 import {ProfileComponent} from "./secure/profile/profile.component";
-import {MessagesComponent} from "./secure/chat/messages/messages.component";
 
 const routes: Routes = [
   {
@@ -15,12 +14,7 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: '/chat', pathMatch: 'full'},
       {
-        path: 'chat',
-        component: ChatComponent,
-        children: [
-          {path: '', redirectTo: '/chat', pathMatch: 'full'},
-          {path: 'messages', component: MessagesComponent}
-        ]
+        path: 'chat', component: ChatComponent,
       },
       {path: 'profile', component: ProfileComponent}
     ]

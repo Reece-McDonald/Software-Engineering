@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Message} from "../../interfaces/message";
@@ -9,9 +9,11 @@ import {MessageService} from "../../services/message.service";
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, AfterViewChecked  {
   messageForm!: FormGroup;
   allMessages: Message[] = [];
+
+  @ViewChild('scrollContainer') private scrollContainer!: ElementRef;
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
@@ -26,12 +28,15 @@ export class ChatComponent implements OnInit {
     this.getAllMessages();
   }
 
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
   submit(): void {
     this.authService.createMessage(this.messageForm.getRawValue()).subscribe(
       res => {
         console.log(res);
         this.getAllMessages();
-        this.reload();
       },
       error => window.alert(error)
     );
@@ -43,14 +48,14 @@ export class ChatComponent implements OnInit {
         this.allMessages = res.data;
       }
     );
+
+    this.scrollToBottom();
   }
 
-  reload() : void {
-    this.allMessages = [...this.allMessages];
-
-    this.allMessages.forEach(function (value) {
-      console.log(value.messagePost);
-    })
+  scrollToBottom(): void {
+    try {
+      this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
+    } catch(err) { }
   }
 
 }
