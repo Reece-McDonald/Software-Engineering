@@ -9,7 +9,7 @@ import {Auth} from "../../classes/auth";
   styleUrls: ['./nav.component.css', './../secure.component.css']
 })
 export class NavComponent implements OnInit {
-  user: User | undefined;
+  user!: User;
 
   constructor(private authService: AuthService) {
   }
