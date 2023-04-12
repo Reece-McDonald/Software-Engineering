@@ -3,13 +3,15 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {Message} from "../../interfaces/message";
 import {MessageService} from "../../services/message.service";
+import {Auth} from "../../classes/auth";
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit, AfterViewChecked  {
+export class ChatComponent implements OnInit, AfterViewChecked {
+  userId!: number;
   messageForm!: FormGroup;
   allMessages: Message[] = [];
 
@@ -21,11 +23,17 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
   }
 
   ngOnInit(): void {
+    Auth.userEmitter.subscribe(
+      user => {
+        this.userId = user.id;
+        this.getAllMessages();
+      });
+
     this.messageForm = this.formBuilder.group({
       messagePost: ''
     });
 
-    this.getAllMessages();
+
   }
 
   ngAfterViewChecked() {
@@ -33,16 +41,23 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
   }
 
   submit(): void {
-    this.authService.createMessage(this.messageForm.getRawValue()).subscribe(
-      res => {
-        console.log(res);
-        this.getAllMessages();
-      },
-      error => window.alert(error)
-    );
+    if (this.messageForm.valid) {
+      this.authService.createMessage(this.messageForm.getRawValue()).subscribe(
+        res => {
+          console.log(res);
+          this.getAllMessages();
+        },
+        error => window.alert(error)
+      );
+    }
+    else {
+      window.alert("Message input can't be empty");
+    }
   }
 
   getAllMessages(): void {
+    console.log(this.userId);
+
     this.messageService.all().subscribe( // TODO: Once a certain amount of posts have been added, do not add anymore.
       (res: any) => {
         this.allMessages = res.data;
@@ -55,7 +70,8 @@ export class ChatComponent implements OnInit, AfterViewChecked  {
   scrollToBottom(): void {
     try {
       this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
-    } catch(err) { }
+    } catch (err) {
+    }
   }
 
 }

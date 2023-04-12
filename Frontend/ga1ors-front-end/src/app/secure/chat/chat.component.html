@@ -2,10 +2,12 @@
 <div class="gradient">
   <div class="chat-container">
     <div class="chat-messages" #scrollContainer>
-      <div *ngFor="let message of allMessages" class="message blue-bg">
-        <div class="message-sender">{{message.firstName}} {{message.lastName}}</div>
-        <div class="message-text">{{message.messagePost}}</div>
-        <div class="message-timestamp">{{message.currentTime}}</div>
+      <div *ngFor="let message of allMessages">
+        <div [ngClass]="message.id == (userId) ? 'blue-bg' : 'gray-bg'" class="message">
+          <div class="message-sender">{{message.firstName}} {{message.lastName}}</div>
+          <div class="message-text">{{message.messagePost}}</div>
+          <div class="message-timestamp">{{message.currentTime}}</div>
+        </div>
       </div>
     </div>
 
