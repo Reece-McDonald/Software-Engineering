@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
 import {Auth} from "../classes/auth";
@@ -8,7 +8,7 @@ import {Auth} from "../classes/auth";
   templateUrl: './secure.component.html',
   styleUrls: ['./secure.component.css']
 })
-export class SecureComponent {
+export class SecureComponent implements OnInit{
   constructor(
     private authService: AuthService,
     private router: Router) {

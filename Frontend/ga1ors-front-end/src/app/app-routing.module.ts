@@ -13,12 +13,12 @@ const routes: Routes = [
     path: '',
     component: SecureComponent,
     children: [
-      {path: '', redirectTo: '/chat/messages', pathMatch: 'full'},
+      {path: '', redirectTo: '/chat', pathMatch: 'full'},
       {
         path: 'chat',
         component: ChatComponent,
         children: [
-          {path: '', redirectTo: '/chat/messages', pathMatch: 'full'},
+          {path: '', redirectTo: '/chat', pathMatch: 'full'},
           {path: 'messages', component: MessagesComponent}
         ]
       },

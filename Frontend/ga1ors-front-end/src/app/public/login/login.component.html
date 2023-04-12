@@ -1,7 +1,7 @@
 <h1 id="title">Welcome to Ga1ors!</h1>
 
 <main class="form-signin w-100 m-auto">
-  <form [formGroup]="form" (submit)="submit()">
+  <form name="form" [formGroup]="form" (submit)="submit()">
     <img class="mb-4 center" src="https://1000logos.net/wp-content/uploads/2021/06/Florida-Gators-logo.png" alt="" width="90" height="65">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
@@ -15,7 +15,7 @@
       <label for="password">Password</label>
     </div>
 
-    <button type="submit" class="w-100 btn btn-lg btn-primary fade-in-text">Submit</button>
+    <button name="submitBtn" type="submit" class="w-100 btn btn-lg btn-primary fade-in-text">Submit</button>
     <button routerLink="/register" class="mt-2 w-100 btn btn-lg btn-primary fade-in-text" id="register">Register</button>
 
   </form>

@@ -1,5 +1,5 @@
 describe('template spec', () => {
-  it('passes', () => {
+  it('login to register', () => {
     cy.visit('http://localhost:4200/login')
     cy.wait(900)
     cy.contains('Register').click()
@@ -14,15 +14,24 @@ describe('template spec', () => {
     cy.wait(1000)
   })
 
-  it('navigates to another link', () =>{
-    cy.visit('http://localhost:4200/chat/messages')  
-    cy.wait(1000)
-    cy.get('[name=message]').type('Hello. This is a test message.')
-    cy.wait(1000)
-    cy.contains('Sign Out').click()
+  it('register to login', () => {
+    cy.visit('http://localhost:4200/register')
+    cy.wait(900)
+    cy.contains('Login').click()
     cy.url().should('include', '/login')
-    cy.wait(500)
-  
-
+    cy.wait(2000)
+    cy.get('[name=email]').type('rlugo@ufl.edu')
+    cy.get('[name=password]').type('rhyan')
+    cy.wait(1000)
   })
+
+  // it('navigates to another link', () =>{
+  //   cy.visit('http://localhost:4200/chat/messages')
+  //   cy.wait(1000)
+  //   cy.get('[name=message]').type('Hello. This is a test message.')
+  //   cy.wait(1000)
+  //   cy.contains('Sign Out').click()
+  //   cy.url().should('include', '/login')
+  //   cy.wait(500)
+  // })
 })
