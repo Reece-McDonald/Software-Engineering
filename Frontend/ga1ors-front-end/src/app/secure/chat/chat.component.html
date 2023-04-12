@@ -2,10 +2,17 @@
 <div class="gradient">
   <div class="chat-container">
     <div class="chat-messages">
-      <app-messages></app-messages>
+      <div *ngFor="let message of allMessages" class="message blue-bg">
+        <div class="message-sender">{{message.firstName}} {{message.lastName}}</div>
+        <div class="message-text">{{message.messagePost}}</div>
+        <div class="message-timestamp">{{message.currentTime}}</div>
+      </div>
     </div>
 
-  <app-message-input></app-message-input>
+    <form [formGroup]="messageForm" (ngSubmit)="submit(); messageForm.reset()" class="chat-input-form">
+      <input type="text" class="chat-input" name="message" required placeholder="Send Message" formControlName="messagePost">
+      <button type="submit" id ="send" class="button send-button">Send</button>
+    </form>
   </div>
 </div>
 

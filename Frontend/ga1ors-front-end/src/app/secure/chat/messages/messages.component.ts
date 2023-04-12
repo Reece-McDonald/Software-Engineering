@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {MessageService} from "../../../services/message.service";
-import {Message} from "../../../interfaces/message";
 
 @Component({
   selector: 'app-messages',
@@ -8,20 +6,25 @@ import {Message} from "../../../interfaces/message";
   styleUrls: ['./messages.component.css', './../chat.component.css']
 })
 export class MessagesComponent implements OnInit {
-  messages: Message[] = [];
 
-  constructor(private messageService: MessageService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.load();
   }
 
-  load(): void {
-    this.messageService.all().subscribe( // TODO: Once a certain amount of posts have been added, do not add anymore.
-      (res: any) => {
-        this.messages = res.data;
-      }
-    );
-  }
+  // getMessages() {
+  //   console.log('Loading all messages');
+  //
+  //   this.messageService.all().subscribe( // TODO: Once a certain amount of posts have been added, do not add anymore.
+  //     (res: any) => {
+  //       this.allMessages = res.data;
+  //     }
+  //   );
+  // }
+  //
+  // load(): void {
+  //   console.log('load called!')
+  //   this.allMessages = [...this.allMessages];
+  // }
 }

@@ -7,7 +7,6 @@ import { ChatComponent } from './chat/chat.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ProfileComponent } from './profile/profile.component';
 import { MessagesComponent } from './chat/messages/messages.component';
-import { MessageInputComponent } from './chat/message-input/message-input.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,6 @@ import { MessageInputComponent } from './chat/message-input/message-input.compon
     ChatComponent,
     ProfileComponent,
     MessagesComponent,
-    MessageInputComponent
   ],
   exports: [
     SecureComponent
