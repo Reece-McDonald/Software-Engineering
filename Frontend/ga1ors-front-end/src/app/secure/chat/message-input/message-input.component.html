@@ -1,0 +1,4 @@
+<form [formGroup]="messageForm" (ngSubmit)="submit(); messageForm.reset()" class="chat-input-form">
+  <input type="text" class="chat-input" name="message" required placeholder="Send Message" formControlName="messagePost">
+  <button type="submit" id ="send" class="button send-button">Send</button>
+</form>
