@@ -181,6 +181,8 @@ func Message(c *fiber.Ctx) error { // Creates a message to be posted, the messag
 		})
 	}
 
+	database.DB.Exec("UPDATE users SET posted_today = true WHERE ID = " + id + ";")
+
 	msg := models.Message{
 		IdNum:     user.Id,
 		FirstName: user.FirstName,
