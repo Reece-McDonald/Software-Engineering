@@ -161,6 +161,12 @@ func Message(c *fiber.Ctx) error { // Creates a message to be posted, the messag
 	var timeDate string
 	timeDate = d + t
 
+	//print(database.MDB.Exec("SELECT count(*) FROM ga1orsmsg.messages"))
+	//if database.MDB.Exec("SELECT count(*) FROM ga1orsmsg.messages") == nil {
+	//	print("it is working")
+	//database.MDB.Exec()
+	//}
+
 	database.DB.Where("id = ?", id).First(&user)
 
 	if err := c.BodyParser(&msgs); err != nil {
@@ -199,7 +205,6 @@ func Message(c *fiber.Ctx) error { // Creates a message to be posted, the messag
 	}
 
 	database.MDB.Create(&msg)
-	//user.PostedToday = true
 
 	return c.JSON(fiber.Map{
 		"message": "Successful post",

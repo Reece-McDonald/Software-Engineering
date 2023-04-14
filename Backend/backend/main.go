@@ -4,15 +4,12 @@ import (
 	"Ga1ors/database"
 	"Ga1ors/routes"
 
-	//"time"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 // Resource: 'https://www.udemy.com/course/angular-go-admin/'
 func main() {
-
 	database.Connect()
 
 	database.ConnectMsg()
@@ -26,5 +23,4 @@ func main() {
 	routes.Setup(app)
 
 	app.Listen(":8000")
-
 }
