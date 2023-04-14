@@ -167,6 +167,13 @@ func Message(c *fiber.Ctx) error { // Creates a message to be posted, the messag
 		return err
 	}
 
+	if user.PostedToday == true {
+		c.Status(400)
+		return c.JSON(fiber.Map{
+			"message": "User already posted today.",
+		})
+	}
+
 	if len(msgs["messagePost"]) > 280 {
 		c.Status(400)
 		return c.JSON(fiber.Map{
