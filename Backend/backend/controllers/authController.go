@@ -4,6 +4,7 @@ import (
 	"Ga1ors/database"
 	"Ga1ors/models"
 	"Ga1ors/util"
+	"fmt"
 	"math/rand"
 	"strconv"
 	"time"
@@ -45,12 +46,14 @@ func Register(c *fiber.Ctx) error { // I believe this should be good. TODO: Only
 	user.SetPassword(userRegisterInformation["password"])
 
 	ver := sendEmail(userRegisterInformation["email"])
-	var vCode int
-	if err := c.BodyParser(vCode); err != nil {
-		return err
-	}
-	if vCode == ver {
+	if userRegisterInformation["verificationCode"] == strconv.Itoa(ver) {
+		fmt.Println("Verified!")
 		database.DB.Create(&user)
+	} else {
+		c.Status(400)
+		return c.JSON(fiber.Map{
+			"message": "Incorrect Verification code.",
+		})
 	}
 	return c.JSON(user)
 }
