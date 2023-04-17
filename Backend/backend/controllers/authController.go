@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
-	//"gopkg.in/gomail.v2"
+	"gopkg.in/gomail.v2"
 )
 
 // Register Allows for the registering of a user. Uses endpoint ['/api/register']
@@ -44,10 +44,14 @@ func Register(c *fiber.Ctx) error { // I believe this should be good. TODO: Only
 
 	user.SetPassword(userRegisterInformation["password"])
 
-	//sendEmail(userRegisterInformation["email"])
-	//if userRegisterInformation["verificationCode"] == strconv.Itoa(ver){
-	database.DB.Create(&user)
-	//}
+	ver := sendEmail(userRegisterInformation["email"])
+	var vCode int
+	if err := c.BodyParser(vCode); err != nil {
+		return err
+	}
+	if vCode == ver {
+		database.DB.Create(&user)
+	}
 	return c.JSON(user)
 }
 
@@ -292,18 +296,16 @@ func sendEmail(to string) int { //func will return verCode which will be used to
 	min := 10000
 	max := 99999
 	verCode := (rand.Intn(max-min+1) + min)
-	/*
-		message := gomail.NewMessage() //message creation
-		message.SetHeader("From", "ga1orsforum@gmail.com")
-		message.SetHeader("To", to)
-		message.SetHeader("Subject", "Ga1ors Verification E-mail")
-		message.SetBody("text/plain", "Thank you for creating your Ga1ors Account! Verification Code: "+strconv.Itoa(verCode))
 
-		email := gomail.NewDialer("smtp.gmail.com", 587, "ga1orsforum@gmail.com", "csmhenukcnmywnmi") //email send func
+	message := gomail.NewMessage() //message creation
+	message.SetHeader("From", "ga1orsforum@gmail.com")
+	message.SetHeader("To", to)
+	message.SetHeader("Subject", "Ga1ors Verification E-mail")
+	message.SetBody("text/plain", "Thank you for creating your Ga1ors Account! Verification Code: "+strconv.Itoa(verCode))
+	email := gomail.NewDialer("smtp.gmail.com", 587, "ga1orsforum@gmail.com", "csmhenukcnmywnmi") //email send func
+	if err := email.DialAndSend(message); err != nil {                                            //error catch
+		panic(err)
+	}
 
-		if err := email.DialAndSend(message); err != nil { //error catch
-			panic(err)
-		}
-	*/
 	return verCode //return verification code
 }
