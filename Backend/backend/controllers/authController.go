@@ -294,12 +294,12 @@ func sendEmail(to string) int { //func will return verCode which will be used to
 	verCode := (rand.Intn(max-min+1) + min)
 	/*
 		message := gomail.NewMessage() //message creation
-		message.SetHeader("From", "NOREPLY.Ga1ors@gmail.com")
+		message.SetHeader("From", "ga1orsforum@gmail.com")
 		message.SetHeader("To", to)
 		message.SetHeader("Subject", "Ga1ors Verification E-mail")
 		message.SetBody("text/plain", "Thank you for creating your Ga1ors Account! Verification Code: "+strconv.Itoa(verCode))
 
-		email := gomail.NewDialer("smtp.gmail.com", 587, "NOREPLY.Ga1ors@gmail.com", "lcopgjjgrotttwpu") //email send func
+		email := gomail.NewDialer("smtp.gmail.com", 587, "ga1orsforum@gmail.com", "csmhenukcnmywnmi") //email send func
 
 		if err := email.DialAndSend(message); err != nil { //error catch
 			panic(err)
