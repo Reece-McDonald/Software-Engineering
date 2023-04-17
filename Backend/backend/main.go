@@ -21,6 +21,15 @@ func main() {
 	}))
 
 	routes.Setup(app)
+	
+	//runTime := time.Date(time.Now().Year(), time.Now().Month(), time.Now().Day(), 12, 0, 0, 0, time.Local)
+
+	// Schedule your function to run at the desired time
+	//time.AfterFunc(runTime.Sub(time.Now()), doSomething)
+
+	
 
 	app.Listen(":8000")
+	// Block the main goroutine from exiting
+	//select {}
 }
