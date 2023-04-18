@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AuthService} from "../../../services/auth.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-message-input',
@@ -14,9 +15,11 @@ export class MessageInputComponent implements OnInit, AfterViewInit {
   @ViewChild('loggedin') input!: HTMLInputElement;
 
   @Output() newMessageCreated = new EventEmitter<boolean>;
+  @Output() alreadyPosted = new EventEmitter<boolean>;
 
   constructor(private formBuilder: FormBuilder,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -43,15 +46,25 @@ export class MessageInputComponent implements OnInit, AfterViewInit {
             console.log(res);
             this.newMessageCreated.emit(true);
           },
-          error => window.alert("Only 1 message.")
+          () =>
+            this.toastr.error('You have already posted today.', 'Error',
+              {
+                timeOut: 3000,
+              })
         );
       }
       else {
-        window.alert("Message input can't be empty");
+        this.toastr.error('You must input a message.', 'Error',
+          {
+          timeOut: 3000,
+        });
       }
     }
     else {
-      window.alert("Must be logged in.");
+      this.toastr.error('You must be logged-in to post.', 'Error',
+        {
+          timeOut: 3000,
+        });
     }
   }
 

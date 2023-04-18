@@ -8,6 +8,8 @@ import {SecureModule} from "./secure/secure.module";
 import {PublicModule} from "./public/public.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CredentialInterceptor} from "./interceptors/credential.interceptor";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from 'ngx-toastr'
 
 @NgModule({
   declarations: [
@@ -15,11 +17,13 @@ import {CredentialInterceptor} from "./interceptors/credential.interceptor";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
     SecureModule,
     PublicModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {

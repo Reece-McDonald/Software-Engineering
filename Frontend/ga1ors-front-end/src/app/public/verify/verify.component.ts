@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-verify',
@@ -12,7 +13,8 @@ export class VerifyComponent implements OnInit {
   vCode = '';
 
   constructor(private router: Router,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -24,10 +26,17 @@ export class VerifyComponent implements OnInit {
       vCode: this.vCode
     }).subscribe(
       () => {
+        this.toastr.success('You have successfully verified your email.', 'Success',
+          {
+            timeOut: 3000,
+          });
         this.router.navigate(['/login'])
       },
-      error => {
-        window.alert("Wrong verification code");
+      () => {
+        this.toastr.error('Wrong verification code.', 'Error',
+          {
+            timeOut: 3000,
+          });
         this.router.navigate(['/register'])
       });
   }

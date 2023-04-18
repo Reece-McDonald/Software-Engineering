@@ -10,7 +10,6 @@ h2 {
   font-weight: bold;
 }
 
-/*https://material.angular.io/components/sidenav/overview*/
 .button {
   border: none;
   padding: 0.625em;
@@ -27,16 +26,14 @@ h2 {
 }
 
 .chat-container {
-  background: #f5f5f5;
-  /*background: #15202b; */
+  background: #15202b;
   font-family: Roboto, sans-serif;
   border-radius: 0;
   align-content: center;
   padding: 0.5em 1.25em;
   margin: auto;
-  max-width: 90em;
-  height: 94.5vh; /*#37.5em*/
-  /* box-shadow: 0 0 0.5em 0.1em #c3c3c333; */
+  max-width: 75em;
+  height: 94.5vh;
 }
 
 .chat-messages {
@@ -44,7 +41,6 @@ h2 {
   width: 45%;
   align-content: center;
   margin: 0.625em auto;
-  /* margin-left: 330px; */
   overflow-y: scroll;
 }
 
@@ -54,7 +50,6 @@ h2 {
 
 .blue-bg {
   background-color: #1c9bef;
-  /* background-color: #fa6416; */
 }
 
 .gray-bg {
@@ -94,6 +89,7 @@ h2 {
   display: flex;
   flex-direction: column;
   color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .message-sender {
