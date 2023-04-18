@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
         password: this.password,
         passwordConfirm: this.passwordConfirm,
       }).subscribe(() => {
-        this.router.navigate(['/login'])
+        this.router.navigate(['/verify'])
       }); //redirect after successful login
     }
 

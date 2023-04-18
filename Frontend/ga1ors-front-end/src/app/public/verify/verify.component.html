@@ -1,0 +1,21 @@
+<h1 id="title">Ga1ors</h1>
+
+<main class="form-signin w-100 m-auto">
+  <form name="registerForm" (submit)="submit()">
+    <img id="logo" class="mb-4 center" src="https://1000logos.net/wp-content/uploads/2021/06/Florida-Gators-logo.png" alt="" width="90" height="65">
+    <h1 class="h3 mb-3 fw-normal">Please verify</h1>
+
+    <div class="form-floating">
+      <input [(ngModel)]="email" name="email" type="email" class="form-control mb-2" id="email" placeholder="UF Email address">
+      <label for="email">UF Email Address</label>
+    </div>
+
+    <div class="form-floating">
+      <input [(ngModel)]="vCode" name="vCode" type="text" class="form-control mb-2" id="vCode" placeholder="Verification Code">
+      <label for="vCode">Verification Code</label>
+    </div>
+
+    <button name="createAccountBtn" class="w-100 btn btn-lg btn-primary fade-in-text" type="submit">Verify Account</button>
+
+  </form>
+</main>

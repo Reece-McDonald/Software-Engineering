@@ -14,12 +14,16 @@ export class AuthService {
     protected http: HttpClient) {
   }
 
-  login(data: any): Observable<any> {
-    return this.http.post(`${environment.api}/login`, data);
-  }
-
   register(data: any): Observable<User> {
     return this.http.post<User>(`${environment.api}/register`, data);
+  }
+
+  verify(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.api}/verify`, data)
+  }
+
+  login(data: any): Observable<any> {
+    return this.http.post(`${environment.api}/login`, data);
   }
 
   user(): Observable<User> {

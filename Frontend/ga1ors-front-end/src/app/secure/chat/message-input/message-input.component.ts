@@ -43,7 +43,7 @@ export class MessageInputComponent implements OnInit, AfterViewInit {
             console.log(res);
             this.newMessageCreated.emit(true);
           },
-          error => window.alert(error)
+          error => window.alert("Only 1 message.")
         );
       }
       else {
