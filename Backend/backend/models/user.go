@@ -12,6 +12,7 @@ type User struct {
 	Email       string `json:"email" gorm:"unique"` // email should be unique in database
 	Password    []byte `json:"-"`                   // password won't show in api requests
 	PostedToday bool   `json:"postedToday"`
+	VCode       uint   `json:"vCode"`
 }
 
 func (user *User) SetPassword(password string) {

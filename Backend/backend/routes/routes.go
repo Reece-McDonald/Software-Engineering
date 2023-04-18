@@ -9,6 +9,7 @@ import (
 func Setup(app *fiber.App) {
 	// Public Routes
 	app.Post("/api/register", controllers.Register)
+	app.Post("/api/verify", controllers.Verification)
 	app.Post("/api/login", controllers.Login)
 
 	// Middleware uses for making sure that a valid user is logged in
