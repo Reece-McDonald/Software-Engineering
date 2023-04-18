@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(2, 5, 23);
+  background-color: rgb(250, 70, 22);
 }
 
 
@@ -10,6 +10,7 @@ h2 {
   font-weight: bold;
 }
 
+/*https://material.angular.io/components/sidenav/overview*/
 .button {
   border: none;
   padding: 0.625em;
@@ -26,14 +27,16 @@ h2 {
 }
 
 .chat-container {
-  background: #15202b;
+  background: #e9e8e8;
+  /*background: #15202b; */
   font-family: Roboto, sans-serif;
   border-radius: 0;
   align-content: center;
   padding: 0.5em 1.25em;
   margin: auto;
-  max-width: 75em;
-  height: 94.5vh;
+  max-width: 90em;
+  height: 94.5vh; /*#37.5em*/
+  /* box-shadow: 0 0 0.5em 0.1em #c3c3c333; */
 }
 
 .chat-messages {
@@ -41,6 +44,7 @@ h2 {
   width: 45%;
   align-content: center;
   margin: 0.625em auto;
+  /* margin-left: 330px; */
   overflow-y: scroll;
 }
 
@@ -50,6 +54,8 @@ h2 {
 
 .blue-bg {
   background-color: #1c9bef;
+  /* background-color: #fa6416; */
+  /* background-color: #22884c; we could test each color */
 }
 
 .gray-bg {
@@ -65,10 +71,10 @@ h2 {
 
 .chat-input {
   padding: 0.625em;
-  margin-top: 15px;
+  margin-top: 25px;
   border: none;
   border-radius: 0.5em;
-  background-color: #f5f5f5;
+  background-color: #fcfcfc;
   color: #333;
   font-size: 1em;
   flex-grow: 1;
@@ -77,7 +83,7 @@ h2 {
 .send-button {
   background-color: #1c9bef;
   color: white;
-  margin-top: 15px;
+  margin-top: 25px;
   font-size: 1em;
   font-weight: bold;
 }
@@ -89,7 +95,6 @@ h2 {
   display: flex;
   flex-direction: column;
   color: #fff;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .message-sender {
