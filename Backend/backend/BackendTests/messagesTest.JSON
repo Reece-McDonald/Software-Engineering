@@ -1,30 +1,22 @@
 [
     {
-        "messagePost": "Test message 1"
-        
-    },
-
-    {
-        "messagePost": "Test message 2"
-        
-    },
-
-    {
-        "messagePost": "Test message 3"
-        
-    },
-
-    {
-        "messagePost": "Test message 4"
-        
-    },
-    {
         "messagePost": ""
+        
     },
-
 
     {
         "messagePost": "This message should be rejected since it does not meet the constraintest of the character limit abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890"
         
+    },
+
+    {
+        "messagePost": "Test message"
+        
+    },
+
+    {
+        "messagePost": "This message should not be posted as the user has already posted their one message."
+        
     }
+
 ]
