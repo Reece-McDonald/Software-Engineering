@@ -4,7 +4,6 @@ import (
 	"Ga1ors/database"
 	"Ga1ors/models"
 	"Ga1ors/util"
-	"fmt"
 	"math/rand"
 	"strconv"
 	"time"
@@ -36,16 +35,18 @@ func Register(c *fiber.Ctx) error { // I believe this should be good. TODO: Only
 			"message": "Passwords do not match",
 		})
 	}
+	ver := sendEmail(userRegisterInformation["email"])
 
 	user := models.User{
 		FirstName: userRegisterInformation["firstName"],
 		LastName:  userRegisterInformation["lastName"],
 		Email:     userRegisterInformation["email"],
+		VCode:     ver,
 	}
 
 	user.SetPassword(userRegisterInformation["password"])
 
-	ver := sendEmail(userRegisterInformation["email"])
+	/* ver := sendEmail(userRegisterInformation["email"])
 	if userRegisterInformation["verificationCode"] == strconv.Itoa(ver) {
 		fmt.Println("Verified!")
 		database.DB.Create(&user)
@@ -54,8 +55,41 @@ func Register(c *fiber.Ctx) error { // I believe this should be good. TODO: Only
 		return c.JSON(fiber.Map{
 			"message": "Incorrect Verification code.",
 		})
-	}
+	} */
+	database.DB.Create(&user)
 	return c.JSON(user)
+}
+
+// verifies email
+func Verification(c *fiber.Ctx) error {
+	var vCode map[string]string
+
+	if err := c.BodyParser(&vCode); err != nil {
+		return err
+	}
+
+	var user models.User
+
+	database.DB.Where("email = ?", vCode["email"]).First(&user) // get user from database
+
+	if user.Id == 0 {
+		c.Status(404)
+		return c.JSON(fiber.Map{
+			"message": "User not found",
+		})
+	}
+
+	if vCode["vCode"] == strconv.Itoa(int(user.VCode)) {
+		return c.JSON(fiber.Map{
+			"message": "Verified.",
+		})
+	} else {
+		c.Status(400)
+		database.DB.Exec("DELETE FROM users WHERE id = " + strconv.Itoa(int(user.Id)) + ";")
+		return c.JSON(fiber.Map{
+			"message": "Incorrect Verification code.",
+		})
+	}
 }
 
 // Login Allows for a user to login. Uses endpoint ['/api/register']
@@ -293,19 +327,19 @@ func UpdatePassword(c *fiber.Ctx) error {
 	return c.JSON(user)
 }
 
-func sendEmail(to string) int { //func will return verCode which will be used to compare with user input on auth page
+func sendEmail(to string) uint { //func will return verCode which will be used to compare with user input on auth page
 
 	rand.Seed(time.Now().UnixNano()) //random code gen
 	min := 10000
 	max := 99999
-	verCode := (rand.Intn(max-min+1) + min)
+	verCode := uint((rand.Intn(max-min+1) + min))
 
 	message := gomail.NewMessage() //message creation
-	message.SetHeader("From", "ga1orsforum@gmail.com")
+	message.SetHeader("From", "ga1ors12345@gmail.com")
 	message.SetHeader("To", to)
 	message.SetHeader("Subject", "Ga1ors Verification E-mail")
-	message.SetBody("text/plain", "Thank you for creating your Ga1ors Account! Verification Code: "+strconv.Itoa(verCode))
-	email := gomail.NewDialer("smtp.gmail.com", 587, "ga1orsforum@gmail.com", "csmhenukcnmywnmi") //email send func
+	message.SetBody("text/plain", "Thank you for creating your Ga1ors Account! Verification Code: "+strconv.Itoa(int(verCode)))
+	email := gomail.NewDialer("smtp.gmail.com", 587, "ga1ors12345@gmail.com", "tmxyqyvkaasykuet") //email send func
 	if err := email.DialAndSend(message); err != nil {                                            //error catch
 		panic(err)
 	}
