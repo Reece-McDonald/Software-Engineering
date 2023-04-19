@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(250, 70, 22);
+  background-color:#002657;
 }
 
 
@@ -27,7 +27,7 @@ h2 {
 }
 
 .chat-container {
-  background: #e9e8e8;
+  background: #030825;
   /*background: #15202b; */
   font-family: Roboto, sans-serif;
   border-radius: 0;
@@ -53,9 +53,9 @@ h2 {
 }
 
 .blue-bg {
-  background-color: #1c9bef;
+  background-color: #1c9bef; 
   /* background-color: #fa6416; */
-  /* background-color: #22884c; we could test each color */
+  /* background-color: #22884c; */
 }
 
 .gray-bg {
