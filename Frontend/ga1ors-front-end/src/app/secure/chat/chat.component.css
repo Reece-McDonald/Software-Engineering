@@ -1,5 +1,9 @@
 body {
+<<<<<<< HEAD
   background-color:#002657;
+=======
+  background-color: rgb(202, 69, 32);
+>>>>>>> eddfb6b80703ca6683d266b00d4040bf59747f80
 }
 
 
@@ -27,8 +31,12 @@ h2 {
 }
 
 .chat-container {
+<<<<<<< HEAD
   background: #030825;
   /*background: #15202b; */
+=======
+  background: #15202b;
+>>>>>>> eddfb6b80703ca6683d266b00d4040bf59747f80
   font-family: Roboto, sans-serif;
   border-radius: 0;
   align-content: center;
@@ -52,13 +60,18 @@ h2 {
   display: none;
 }
 
+<<<<<<< HEAD
 .blue-bg {
   background-color: #1c9bef; 
+=======
+.userMessage-bg {
+  background-color: #1c9bef;
+>>>>>>> eddfb6b80703ca6683d266b00d4040bf59747f80
   /* background-color: #fa6416; */
   /* background-color: #22884c; */
 }
 
-.gray-bg {
+.otherUserMessage-bg {
   background-color: #3d5365;
 }
 
