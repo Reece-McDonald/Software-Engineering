@@ -1,4 +1,5 @@
 User Stories (also on the Github wiki) https://github.com/Reece-McDonald/Software-Engineering
+
 Sprint 4 Progress Video: https://youtu.be/xvFZjo5PgG0
 
 1. As a socially active user, I want to be able to easily digest large amounts of content so that I can consume the website’s daily media in a reasonable amount of time.
@@ -128,7 +129,12 @@ Another component test was created for the sake of testing the chat-message comp
 
 Lastly, we experimented with E2E testing and created an E2E test that navigates across the different pages in our application. The interactive parts in each component were tested in order to both become familiar with and show off a more automated process. The testing also served as an example of how it would look to navigate the page and will help in possibly fixing the navigation in the near future.
 
+(New)
+An E2E test was created in order to see if messages could be typed into the message input bar and sent. A test message is typed and the send button is pressed in order to have the message be displayed on the screen. This is essentially the functionality the front end has added since the last sprint that could be tested. 
+
 Frontend----------------------------------------------------------------------------------------------------------------------------------
 As previously stated, this Sprint was mainly focused on being able to get messages input into the front-end to be able to be established in the backend. The message page was updated (from Sprint 2) and incorporated into the routing and can take in messages given by a user. The only problem is that a message will be sent but isn't able to be displayed yet which we will have finished by Sprint 4. Furthermore, interfaces for users and messages were added in order to be able to emulate the user and message objects of the backend and send them to the backend. 
 
 Slight tweaks were made to the visual aspects of the pages seen on the front end, such as fixing certain whitespaces and changing the fonts to line up with the pages and their purposes (signing in or registering for an account). Most of the things done were also just reconfiguring the structure of the front end to improve said structure. Lastly, we also added some extra tests aside from the ones in Sprint 2 which test new components as well as several components at once in order to introduce a more automated testing process.
+
+For Sprint 4, we changed the style of the chat menu in order to be more in line with what a UF page would look like and added different components to be able to display the separate messages, as well as grab every message that has been displayed as of the time of retrieval. Another thing added was the feature of only allowing a single user to post once since that it part of the ga1ors product. 
