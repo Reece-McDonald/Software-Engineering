@@ -26,7 +26,7 @@ export class VerifyComponent implements OnInit {
       vCode: this.vCode
     }).subscribe(
       () => {
-        this.toastr.success('You have successfully verified your email.', 'Success',
+        this.toastr.success('Email successfully verified.', 'Success',
           {
             timeOut: 3000,
           });

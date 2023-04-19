@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(250, 70, 22);
+  background-color: rgb(202, 69, 32);
 }
 
 
@@ -27,8 +27,7 @@ h2 {
 }
 
 .chat-container {
-  background: #e9e8e8;
-  /*background: #15202b; */
+  background: #15202b;
   font-family: Roboto, sans-serif;
   border-radius: 0;
   align-content: center;
@@ -52,13 +51,13 @@ h2 {
   display: none;
 }
 
-.blue-bg {
+.userMessage-bg {
   background-color: #1c9bef;
   /* background-color: #fa6416; */
   /* background-color: #22884c; we could test each color */
 }
 
-.gray-bg {
+.otherUserMessage-bg {
   background-color: #3d5365;
 }
 

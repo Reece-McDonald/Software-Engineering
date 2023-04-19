@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit {
   passwordConfirm = '';
 
   constructor(private router: Router,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -23,10 +25,16 @@ export class RegisterComponent implements OnInit {
 
   submit() {
     if (this.checkIfEmpty(this.firstName) || this.checkIfEmpty(this.lastName) || this.checkIfEmpty(this.email) || this.checkIfEmpty(this.password) || this.checkIfEmpty(this.password)) {
-      window.alert("All fields must be filled in.");
+      this.toastr.error('All fields must be filled in.', 'Error',
+        {
+          timeOut: 3000,
+        });
     }
     else if (this.password != this.passwordConfirm) {
-      window.alert("Passwords are not the same");
+      this.toastr.error('Passwords are not the same.', 'Error',
+        {
+          timeOut: 3000,
+        });
     }
     else {
       this.authService.register({
@@ -39,14 +47,6 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/verify'])
       }); //redirect after successful login
     }
-
-    // console.log({
-    //   firstName: this.firstName,
-    //   lastName: this.lastName,
-    //   email: this.email,
-    //   password: this.password,
-    //   passwordConfirm: this.password,
-    // })
   }
 
   // check if user inputs are empty
