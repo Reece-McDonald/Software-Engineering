@@ -117,7 +117,6 @@ Another accomplishment from sprint 3 was the email verification. This feature wa
  Another thing we accomplished for this sprint was finalizing the postedToday function within our user database. When a user posts, their postedToday boolean value is set to true, everytime a post is made this boolean is checked, in the case a user has not posted today, the message goes through normally. If the boolean is false, their post is rejected.
 
 
-
 Frontend Tests (including previous sprints)------------------------------------------------------------------------------------------------ 
 
 The main focus of the testing comprised of the login, registration, and chat components since they are the most complete components of the frontend and represent the pages that will be accessed most by the user.
@@ -131,11 +130,12 @@ Another component test was created for the sake of testing the chat-message comp
 Lastly, we experimented with E2E testing and created an E2E test that navigates across the different pages in our application. The interactive parts in each component were tested in order to both become familiar with and show off a more automated process. The testing also served as an example of how it would look to navigate the page and will help in possibly fixing the navigation in the near future.
 
 (New)
-An E2E test was created in order to see if messages could be typed into the message input bar and sent. A test message is typed and the send button is pressed in order to have the message be displayed on the screen. This is essentially the functionality the front end has added since the last sprint that could be tested. 
+An E2E test was created in order to see if messages could be typed into the message input bar and sent. A test message is typed and the send button is pressed in order to have the message be displayed on the screen. This is essentially the functionality the front end has added since the last sprint that could be tested, aside from the verify page. 
+
+A component test for the verification page was planned but it's difficult to verify if the email gets to your inbox since the inbox is on completely different software.
 
 Frontend----------------------------------------------------------------------------------------------------------------------------------
-As previously stated, this Sprint was mainly focused on being able to get messages input into the front-end to be able to be established in the backend. The message page was updated (from Sprint 2) and incorporated into the routing and can take in messages given by a user. The only problem is that a message will be sent but isn't able to be displayed yet which we will have finished by Sprint 4. Furthermore, interfaces for users and messages were added in order to be able to emulate the user and message objects of the backend and send them to the backend. 
 
-Slight tweaks were made to the visual aspects of the pages seen on the front end, such as fixing certain whitespaces and changing the fonts to line up with the pages and their purposes (signing in or registering for an account). Most of the things done were also just reconfiguring the structure of the front end to improve said structure. Lastly, we also added some extra tests aside from the ones in Sprint 2 which test new components as well as several components at once in order to introduce a more automated testing process.
+For Sprint 4, we changed the style of the chat menu in order to be more in line with what a UF page would look like and added different components to be able to display the separate messages, as well as grab every message that has been displayed as of the time of retrieval. Another thing added was the feature of only allowing a single user to post once since that is part of the ga1ors product. Toastr messages were added in order to replace the window pop-up notifcations since they are break the flow of the experience by requiring the user to click on the notification.
 
-For Sprint 4, we changed the style of the chat menu in order to be more in line with what a UF page would look like and added different components to be able to display the separate messages, as well as grab every message that has been displayed as of the time of retrieval. Another thing added was the feature of only allowing a single user to post once since that it part of the ga1ors product. 
+The verification page was also created and works with the backend; furthermore, a user is now able to enter their email and receive a verification code and will then have to enter that code in order to finish creating their account. The verification page is, stylistically, very much inline with the login and register pages. The chat page is different since it has a more unique layout compared to the previously mentioned pages and it has a look that differs because of the fact that the colors are too bright and take away from the immersion of being in a UF messaging application. 
