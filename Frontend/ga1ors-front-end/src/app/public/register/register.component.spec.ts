@@ -18,6 +18,6 @@ describe('RegisterComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).toBeTruthy(); //this is an issue with Cypress, software works regardless.
   });
 });
