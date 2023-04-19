@@ -5,45 +5,49 @@ import {AuthService} from "../../services/auth.service";
 import {ToastrService} from "ngx-toastr";
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css', './../public.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css', './../public.component.css']
 })
 export class LoginComponent implements OnInit {
-    form!: FormGroup
+  form!: FormGroup
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private router: Router,
-        private authService: AuthService,
-        private toastr: ToastrService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private toastr: ToastrService) {
+  }
+
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      email: '',
+      password: ''
+    });
+  }
+
+  submit() {
+    if (this.checkIfEmpty(this.form.get(['email'])?.value) || this.checkIfEmpty(this.form.get(['password'])?.value)) {
+      this.toastr.error('All fields must be filled in.', 'Error',
+        {
+          timeOut: 3000,
+        });
     }
-
-    ngOnInit(): void {
-        this.form = this.formBuilder.group({
-            email: '',
-            password: ''
+    else {
+      this.authService.login(this.form.getRawValue()).subscribe(
+        () => {
+          this.toastr.success('Login successful.', 'Success',
+            {
+              timeOut: 3000,
+            });
+          this.router.navigate(['/']);
         });
     }
 
-    submit() {
-        // console.log(this.form.getRawValue());
-        //window.alert('Login Success');
+  }
 
-        if (this.checkIfEmpty(this.form.get(['email'])?.value) || this.checkIfEmpty(this.form.get(['password'])?.value)) {
-            this.toastr.error('All fields must be filled in.', 'Error',
-                {
-                    timeOut: 3000,
-                });
-        }
-        else {
-            this.authService.login(this.form.getRawValue()).subscribe(() => this.router.navigate(['/']));
-        }
-
-    }
-
-    // check if user inputs are empty
-    checkIfEmpty(value: string): boolean {
-        return value === null || value.trim().length === 0;
-    }
+  // check if user inputs are empty
+  checkIfEmpty(value: string): boolean {
+    return value === null || value.trim().length === 0;
+  }
 }
