@@ -1,6 +1,6 @@
 User Stories (also on the Github wiki) https://github.com/Reece-McDonald/Software-Engineering
 
-Sprint 4 Progress Video: https://youtu.be/xvFZjo5PgG0
+Sprint 4 Progress Video: https://drive.google.com/file/d/1cy08XtDpNujVJGeKa7LQvmZ4A_p9qwL1/view?usp=sharing
 
 1. As a socially active user, I want to be able to easily digest large amounts of content so that I can consume the website’s daily media in a reasonable amount of time.
 
