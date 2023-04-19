@@ -26,14 +26,14 @@ export class VerifyComponent implements OnInit {
       vCode: this.vCode
     }).subscribe(
       () => {
-        this.toastr.success('Email successfully verified.', 'Success',
+        this.toastr.success('Registration successful', 'Success',
           {
             timeOut: 3000,
           });
         this.router.navigate(['/login'])
       },
       () => {
-        this.toastr.error('Wrong verification code.', 'Error',
+        this.toastr.error('Registration unsuccessful. Wrong verification code. Please try again.', 'Error',
           {
             timeOut: 3000,
           });

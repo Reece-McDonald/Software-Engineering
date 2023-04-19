@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {User} from "../../interfaces/user";
 import {Auth} from "../../classes/auth";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +12,8 @@ import {Auth} from "../../classes/auth";
 export class NavComponent implements OnInit {
   user!: User;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -20,7 +22,10 @@ export class NavComponent implements OnInit {
 
   logout(): void {
     this.authService.logout().subscribe(() => {
-      console.log("Successfully logged out");
+      this.toastr.success('Successfully logged out.', 'Success',
+        {
+          timeOut: 3000,
+        });
     });
   }
 }

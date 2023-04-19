@@ -36,6 +36,13 @@ export class RegisterComponent implements OnInit {
           timeOut: 3000,
         });
     }
+    else if (!this.email.includes('@ufl.edu'))
+    {
+      this.toastr.error('Email must be a valid UF email.', 'Error',
+        {
+          timeOut: 3000,
+        });
+    }
     else {
       this.authService.register({
         firstName: this.firstName,
@@ -44,7 +51,11 @@ export class RegisterComponent implements OnInit {
         password: this.password,
         passwordConfirm: this.passwordConfirm,
       }).subscribe(() => {
-        this.router.navigate(['/verify'])
+        this.toastr.info('Please verify your email.', 'Verification',
+          {
+            timeOut: 3000,
+          });
+        this.router.navigate(['/verify']);
       }); //redirect after successful login
     }
   }
